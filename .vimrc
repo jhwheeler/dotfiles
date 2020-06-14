@@ -12,10 +12,13 @@ set noswapfile
 set encoding=utf8
 set synmaxcol=120
 set number
+set relativenumber
 set nobackup
 set nowritebackup
 set undodir=~/.vim/undodir
 set hlsearch
+set splitbelow
+set splitright
 set undofile
 set incsearch
 set colorcolumn=0
@@ -32,6 +35,11 @@ set updatetime=50
 set shortmess+=c
 
 highlight clear SignColumn
+
+let mapleader = " "
+let g:netrw_browse_split=2
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
 
 "" Plugins
 
@@ -61,16 +69,29 @@ Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/space-vim-dark'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'bling/vim-bufferline'
 
 call plug#end()
 
+"" Colors
 colorscheme space-vim-dark
 set termguicolors
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
+ 
+"" Remaps
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
+nnoremap <leader>ev :vsp ~/.vimrc<CR>
 
-" MOTION
+"" EasyMotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 "Jump to anywhere you want with minimal keystrokes, with just one key
@@ -93,20 +114,8 @@ if executable('rg')
   let g:rg_derive_root='true'
 endif
 
-let mapleader = " "
-let g:netrw_browse_split=2
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-
-"" Remaps
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <silent> <Leader>+ :vertical resize +5<CR>
-nnoremap <silent> <Leader>- :vertical resize -5<CR>
+"" Airline
+let g:airline#extensions#bufferline#overwrite_variables = 0
 
 "" Fugitive
 nmap <leader>gh :diffget //3<CR>
@@ -120,6 +129,7 @@ let g:coc_global_extensions = [
   \ 'coc-pairs',
   \ 'coc-json',
   \ 'coc-svelte',
+  \ 'coc-vimlsp',
   \  ]
 
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -134,16 +144,16 @@ endif
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
+inoremap <silent><expr> <leader> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()"
