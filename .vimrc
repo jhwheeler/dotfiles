@@ -1,85 +1,74 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+syntax on
 
-set number
-set autoindent
-set tabstop=2
+set hidden
+set noerrorbells
+set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
-set cursorline
-set synmaxcol=120
-set encoding=utf8
-set hlsearch
-" set nowrap
-"set ignorecase
+set smartindent
+set nu
 set smartcase
+set noswapfile
+set encoding=utf8
+set synmaxcol=120
+set number
+set nobackup
+set nowritebackup
+set undodir=~/.vim/undodir
+set hlsearch
+set undofile
+set incsearch
+set colorcolumn=0
+set synmaxcol=0
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Give more space for displaying messages
+set cmdheight=2
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-sensible'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'tpope/vim-repeat'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-commentary'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'Raimondi/delimitMate'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'mxw/vim-jsx'
-Plugin 'pangloss/vim-javascript'
-Plugin 'lambdatoast/elm.vim'
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=50
 
-" Plugin 'powerline/powerline'
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+highlight clear SignColumn
 
-" tagbar
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_width = 30
+"" Plugins
 
-" ultisnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Download Vim Plug if not already downloaded
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Powerline setup
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-set t_Co=256
-set laststatus=2
-set term=xterm-256color
-set termencoding=utf-8
-set guifont=Ubuntu\ Mono\ derivative\
+call plug#begin('~/.vim/plugged')
 
+Plug 'sheerun/vim-polyglot'
+Plug 'evanleck/vim-svelte'
+Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+Plug 'easymotion/vim-easymotion'
+Plug 'vim-utils/vim-man'
+Plug 'mbbill/undotree'
+Plug 'vim-airline/vim-airline'
+Plug 'mxw/vim-jsx'
+Plug 'majutsushi/tagbar'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'liuchengxu/space-vim-dark'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-" Airline theme
+call plug#end()
 
-let g:airline_theme='murmur'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_python_checkers = ['pylint']
+colorscheme space-vim-dark
+set termguicolors
+hi Normal     ctermbg=NONE guibg=NONE
+hi LineNr     ctermbg=NONE guibg=NONE
+hi SignColumn ctermbg=NONE guibg=NONE
 
 " MOTION
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -97,28 +86,117 @@ nmap s <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
 
 " JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+map <Leader>J <Plug>(easymotion-j)
+map <Leader>K <Plug>(easymotion-k)
 
+if executable('rg')
+  let g:rg_derive_root='true'
+endif
 
-" nerdtree
-" autocmd vimenter * NERDTree
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let mapleader = " "
+let g:netrw_browse_split=2
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
 
-map <C-n> :NERDTreeToggle<CR>
+"" Remaps
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <silent> <Leader>+ :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
-nnoremap <C-S-tab> :gt<CR>
-nnoremap <C-tab>   :gT<CR>
+"" Fugitive
+nmap <leader>gh :diffget //3<CR>
+nmap <leader> gu :diffget //2<CR>
+nmap <leader>gs :G<CR>
 
-" CtrlP
+"" CoC
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+" Extensions
+let g:coc_global_extensions = [
+  \ 'coc-pairs',
+  \ 'coc-json',
+  \ 'coc-svelte',
+  \  ]
 
-" vim-colors
-" colorscheme badwolf
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
-let g:virtualenv_auto_activate = 1
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()"
+
+" GoTo code navigation.
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+nmap <leader>g] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+nnoremap <leader>cr :CocRestart
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Python path
+let g:python3_host_prog = $GLOBALINSTALLDIR . "/usr/bin/python3"
+
+"" FZF
+nnoremap <leader>; :FZF <CR>
+
+function! FloatingFZF()
+  let width = float2nr(&columns * 0.9)
+  let height = float2nr(&lines * 0.8)
+  let opts = { 'relative': 'editor',
+             \ 'row': (&lines - height) / 2,
+             \ 'col': (&columns - width) / 2,
+             \ 'width': width,
+             \ 'height': height }
+
+  call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+endfunction
+
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }

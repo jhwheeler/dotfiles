@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/alacritas/.oh-my-zsh
+  export ZSH=/Users/alacritas/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -74,11 +74,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -86,19 +86,24 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export NVM_DIR="/home/alacritas/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH=$PATH:~/.vimpkg/bin
+
+export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools/
+export ANDROID_SDK=/Users/alacritas/Library/Android/sdk
+export PATH=$PATH:/Users/alacritas/platform-tools
+export PATH=$PATH:/Users/alacritas/Applications/terraform
+export PATH=$PATH:/opt/anaconda3/bin
+
+# AWS
+export AWS_ACCESS_KEY_ID=AKIAI4H5PU4AN6H2TVHA
+export AWS_SECRET_ACCESS_KEY=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
+
+# Deno
+export DENO_INSTALL="/Users/alacritas/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 # added by travis gem
 [ -f /home/alacritas/.travis/travis.sh ] && source /home/alacritas/.travis/travis.sh
@@ -106,6 +111,115 @@ export PATH=$PATH:~/.vimpkg/bin
 # This removes repeated commands in terminal history
 export HISTCONTROL=ignoreboth:erasedups
 
-# Create aliases for copying/pasting to/from clipboard
+# Ensure CLI programs run in English
+export LANG=en_US
+export LC_ALL=en_US.UTF-8
+
+# Fletch env vars
+export PLAYPILOT_PORT=8000
+export FLETCH_PORT=8001
+# export PLAYPILOT_HOST=$(ifconfig docker0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
+# TEMPORARY:
+export PLAYPILOT_HOST=127.0.0.1
+
+## Aliases
+
+
+# Copying/pasting to/from clipboard
 alias pbcopy='xclip -sel clip'
 alias pbpaste='xclip -sel clip -o'
+
+# Common typos
+alias exti='exit'
+alias eit='exit'
+alias eitx='exit'
+alias eixt='exit'
+alias eitx='exit'
+alias xit='exit'
+alias wxit='exit'
+alias wit='exit'
+alias :x='exit'
+alias :q='exit'
+
+# Miscellaneous Shortcuts
+alias vim='nvim'
+alias zshrc='nvim ~/.zshrc'
+alias vimrc='nvim ~/.vimrc'
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+alias rn='create-react-native-app'
+alias terraform='/Applications/terraform'
+alias ping8='ping 8.8.8.8'
+alias pyds='cd ~/Projects/Tutorials/Python_DataScience/Resources'
+
+### Playpilot
+
+# General
+
+alias n='npm run'
+alias pp='cd ~/projects/playpilot'
+alias ppweb='cd ~/projects/playpilot/web'
+alias ppapp='cd ~/projects/playpilot/app'
+alias houston='cd ~/projects/playpilot/houston'
+
+# Playpilot Web App Commands
+alias yd='yarn dev'
+alias nd='npm run dev'
+alias ndprod='npm run dev --prod'
+
+# Playpilot Mobile App Commands
+alias ys='yarn start'
+alias ysi='yarn start --ios'
+alias ysa='yarn start --android'
+alias ysp='yarn start --useProdAPI'
+alias yspi='yarn start --useProdAPI --ios'
+alias yspa='yarn start --useProdAPI --android'
+alias yt='yarn test'
+alias ytw='yarn test --watch'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+source ~/.iterm2_shell_integration.zsh
+
+
+# tabtab source for serverless package
+# tabtab source for serverless package
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/serverless.zsh
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/serverless.zsh
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/alacritas/Projects/Playpilot/api-playground/node_modules/tabtab/.completions/sls.zsh
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/slss.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+PROMPT='%D{%L:%M:%S}] '$PROMPT
+
+# FZF Config
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*}"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
+
