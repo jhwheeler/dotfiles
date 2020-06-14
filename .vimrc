@@ -7,7 +7,6 @@ set noerrorbells
 set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
-set nu
 set ignorecase
 set smartcase
 set noswapfile
@@ -61,8 +60,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-abolish'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
