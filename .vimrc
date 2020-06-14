@@ -1,12 +1,14 @@
 syntax on
 
+filetype plugin indent on
+
 set hidden
 set noerrorbells
 set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
-set smartindent
 set nu
+set ignorecase
 set smartcase
 set noswapfile
 set encoding=utf8
@@ -65,12 +67,10 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'vim-airline/vim-airline'
-Plug 'mxw/vim-jsx'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/space-vim-dark'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'bling/vim-bufferline'
 
 call plug#end()
 
@@ -115,9 +115,6 @@ if executable('rg')
   let g:rg_derive_root='true'
 endif
 
-"" Airline
-let g:airline#extensions#bufferline#overwrite_variables = 0
-
 "" Fugitive
 nmap <leader>gh :diffget //3<CR>
 nmap <leader> gu :diffget //2<CR>
@@ -145,7 +142,7 @@ endif
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <leader> <TAB>
+inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
