@@ -17,6 +17,8 @@ set relativenumber
 set nobackup
 set nowritebackup
 set undodir=~/.vim/undodir
+set history=3000
+set undolevels=1000
 set hlsearch
 set splitbelow
 set splitright
@@ -68,6 +70,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'vim-airline/vim-airline'
+Plug 'bling/vim-bufferline'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/space-vim-dark'
@@ -228,3 +231,10 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 "" AsyncRun
 let g:asyncrun_open = 8
+
+"" Airline
+let g:bufferline_echo = 0
+autocmd VimEnter *
+      \ let &statusline='%{bufferline#refresh_status()}'
+      \ .bufferline#get_status_string()
+let g:airline_theme='violet'
