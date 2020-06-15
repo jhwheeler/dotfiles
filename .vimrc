@@ -94,6 +94,7 @@ nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 nnoremap <leader>ev :vsp ~/.vimrc<CR>
+nnoremap <leader>: :History:<CR>
 
 "" EasyMotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
