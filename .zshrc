@@ -160,6 +160,7 @@ alias pp='cd ~/projects/playpilot'
 alias ppweb='cd ~/projects/playpilot/web'
 alias ppapp='cd ~/projects/playpilot/app'
 alias houston='cd ~/projects/playpilot/houston'
+alias gravity='cd ~/projects/playpilot/gravity'
 
 # Playpilot Web App Commands
 alias yd='yarn dev'
