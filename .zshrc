@@ -97,10 +97,6 @@ export PATH=$PATH:/Users/alacritas/platform-tools
 export PATH=$PATH:/Users/alacritas/Applications/terraform
 export PATH=$PATH:/opt/anaconda3/bin
 
-# AWS
-export AWS_ACCESS_KEY_ID=AKIAI4H5PU4AN6H2TVHA
-export AWS_SECRET_ACCESS_KEY=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
-
 # Deno
 export DENO_INSTALL="/Users/alacritas/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
