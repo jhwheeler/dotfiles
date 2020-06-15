@@ -26,7 +26,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -37,7 +37,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -118,8 +118,16 @@ export FLETCH_PORT=8001
 # TEMPORARY:
 export PLAYPILOT_HOST=127.0.0.1
 
-## Aliases
+# Set tab title to current working directory
+# Use % instead of %1 to get full path
+# Instead of just the last segment
+case $TERM in
+  xterm*)
+    precmd () {print -Pn "\e]0;%1~\a"}
+    ;;
+esac
 
+## Aliases
 
 # Copying/pasting to/from clipboard
 alias pbcopy='xclip -sel clip'
