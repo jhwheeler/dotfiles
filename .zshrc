@@ -232,5 +232,12 @@ export FZF_DEFAULT_COMMAND='rg
 -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*}"
 '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
+export FZF_DEFAULT_OPTS='
+--height 96%
+--reverse
+--preview "cat {}"
+--bind ctrl-a:select-all
+--color=fg:#b647cf,bg:#000000,hl:#2ef29d
+--color=fg+:#bec3cc,bg+:#211e1e,hl+:#36ebc4
+'
 
