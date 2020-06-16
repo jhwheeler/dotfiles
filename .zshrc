@@ -241,3 +241,7 @@ export FZF_DEFAULT_OPTS='
 --color=fg+:#bec3cc,bg+:#211e1e,hl+:#36ebc4
 '
 
+## Vim mode in ZSH
+# Activate vim mode
+bindkey -v
+
