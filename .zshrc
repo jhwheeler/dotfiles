@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/Users/alacritas/.oh-my-zsh
+export ZSH=/Users/alacritas/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -52,16 +52,16 @@ HIST_STAMPS="dd.mm.yyyy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
-	node
-	cp
-	tar
-	python
-	npm
-	man
-	zsh-autosuggestions
-	zsh-syntax-hilighting
-	z
+  git
+  node
+  cp
+  tar
+  python
+  npm
+  man
+  zsh-autosuggestions
+  zsh-syntax-hilighting
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -209,13 +209,13 @@ source ~/.iterm2_shell_integration.zsh
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda3/bin:$PATH"
-    fi
+  if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+    . "/opt/anaconda3/etc/profile.d/conda.sh"
+  else
+    export PATH="/opt/anaconda3/bin:$PATH"
+  fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
