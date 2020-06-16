@@ -153,6 +153,7 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 alias rn='create-react-native-app'
 alias terraform='/Applications/terraform'
 alias ping8='ping 8.8.8.8'
+alias dotfiles='cd ~/projects/dotfiles'
 alias pyds='cd ~/Projects/Tutorials/Python_DataScience/Resources'
 
 ### Playpilot
