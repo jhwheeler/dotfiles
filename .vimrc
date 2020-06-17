@@ -45,6 +45,7 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_liststyle = 3
 
+
 "" Plugins
 
 " Download Vim Plug if not already downloaded
@@ -80,12 +81,14 @@ Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
+
 "" Colors
 colorscheme space-vim-dark
 set termguicolors
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
+
 
 "" Remaps
 nnoremap <leader>h :wincmd h<CR>
@@ -101,6 +104,7 @@ nnoremap <leader>ev :vsp ~/.vimrc<CR>
 nnoremap <leader>: :History:<CR>
 " Trim trailing whitespace
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
 
 "" EasyMotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -125,10 +129,12 @@ if executable('rg')
   let g:rg_derive_root='true'
 endif
 
+
 "" Fugitive
 nmap <leader>gh :diffget //3<CR>
 nmap <leader> gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
+
 
 "" CoC
 
@@ -202,6 +208,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " Python path
 let g:python3_host_prog = $GLOBALINSTALLDIR . "/usr/bin/python3"
 
+
 "" FZF
 nnoremap <leader>; :FZF <CR>
 
@@ -246,8 +253,10 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
+
 "" AsyncRun
 let g:asyncrun_open = 8
+
 
 "" Airline
 let g:bufferline_echo = 0
