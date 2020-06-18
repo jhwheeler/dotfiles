@@ -97,7 +97,7 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 alias rn='create-react-native-app'
 alias terraform='/Applications/terraform'
 alias ping8='ping 8.8.8.8'
-alias dotfiles='cd ~/projects/dotfiles'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pyds='cd ~/Projects/Tutorials/Python_DataScience/Resources'
 
 ### Playpilot
@@ -125,6 +125,10 @@ alias yspi='yarn start --useProdAPI --ios'
 alias yspa='yarn start --useProdAPI --android'
 alias yt='yarn test'
 alias ytw='yarn test --watch'
+
+# Watson Time Tracker
+alias track='watson start playpilot'
+
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source ~/.iterm2_shell_integration.zsh
@@ -207,3 +211,4 @@ _fix_cursor() {
 }
 
 precmd_functions+=(_fix_cursor)
+

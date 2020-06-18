@@ -1,0 +1,27 @@
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[user]
+	name = Jackson Holiday Wheeler
+	email = jhwheeler@gmail.com
+[credential]
+	helper = osxkeychain
+[pull]
+	rebase = false
+[core]
+	excludesfile = /Users/alacritas/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[alias]
+  co = checkout
+  br = branch
+  d = diff
+  p = add --patch

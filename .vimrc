@@ -79,6 +79,8 @@ Plug 'liuchengxu/space-vim-dark'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 call plug#end()
 
@@ -92,11 +94,11 @@ hi SignColumn ctermbg=NONE guibg=NONE
 
 
 "" Remaps
-nnoremap <leader>h :wincmd h<CR>
-nnoremap <leader>j :wincmd j<CR>
-nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
-nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <silent> <leader>h :wincmd h<CR>
+nnoremap <silent> <leader>j :wincmd j<CR>
+nnoremap <silent> <leader>k :wincmd k<CR>
+nnoremap <silent> <leader>l :wincmd l<CR>
+nnoremap <silent> <leader>u :UndotreeShow<CR>
 " Show file tree
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
@@ -105,7 +107,6 @@ nnoremap <leader>ev :vsp ~/.vimrc<CR>
 nnoremap <leader>: :History:<CR>
 " Trim trailing whitespace
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
-
 
 "" EasyMotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -265,3 +266,11 @@ autocmd VimEnter *
       \ let &statusline='%{bufferline#refresh_status()}'
       \ .bufferline#get_status_string()
 let g:airline_theme='violet'
+
+"" Session
+set sessionoptions-=buffers
+set sessionoptions-=help
+let g:session_autoload='yes'
+let g:session_default_to_last='yes'
+let g:session_autosave='yes'
+let g:session_command_aliases = 1
