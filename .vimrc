@@ -108,12 +108,12 @@ nnoremap <silent> <leader>l :wincmd l<CR>
 nnoremap <silent> <leader>u :UndotreeShow<CR>
 " Show file tree
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <silent> <Leader>+ :vertical resize +5<CR>
-nnoremap <silent> <Leader>- :vertical resize -5<CR>
+nnoremap <silent> <leader>+ :vertical resize +5<CR>
+nnoremap <silent> <leader>- :vertical resize -5<CR>
 nnoremap <leader>ev :vsp ~/.vimrc<CR>
 nnoremap <leader>: :History:<CR>
 " Trim trailing whitespace
-nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <silent> <F5> :let _s=@/ <bar> :%s/\s\+$//e <bar> :let @/=_s <bar> :nohl <bar> :unlet _s <CR>
 
 "" EasyMotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -131,8 +131,8 @@ nmap s <Plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
 
 " JK motions: Line motions
-map <Leader>J <Plug>(easymotion-j)
-map <Leader>K <Plug>(easymotion-k)
+map <leader>J <Plug>(easymotion-j)
+map <leader>K <Plug>(easymotion-k)
 
 if executable('rg')
   let g:rg_derive_root='true'
@@ -208,7 +208,7 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
+" " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
