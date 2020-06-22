@@ -140,9 +140,9 @@ endif
 
 
 "" Fugitive
+nnoremap <leader>gs :vertical Gstatus <bar> :vertical resize 50<CR>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader> gu :diffget //2<CR>
-nmap <leader>gs :G<CR>
 
 
 "" CoC
