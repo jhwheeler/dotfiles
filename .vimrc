@@ -41,11 +41,15 @@ set shortmess+=c
 highlight clear SignColumn
 
 let mapleader = " "
-let g:netrw_browse_split=2
+
+"" File tree (netrw)
+let g:netrw_browse_split=4
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:netrw_liststyle = 3
-
+let g:netrw_list_hide=netrw_gitignore#Hide()
+" Hide hidden files
+" let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 "" Plugins
 
