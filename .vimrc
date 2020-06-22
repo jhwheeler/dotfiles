@@ -281,6 +281,7 @@ nnoremap <leader>oqf<CR> :call QuickFixOpenAll()<CR>
 
 "" AsyncRun
 let g:asyncrun_open = 8
+nnoremap <leader>r :AsyncRun
 
 
 "" Airline
