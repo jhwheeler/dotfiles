@@ -103,6 +103,7 @@ alias terraform='/Applications/terraform'
 alias ping8='ping 8.8.8.8'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pyds='cd ~/Projects/Tutorials/Python_DataScience/Resources'
+# alias ctags="`brew --prefix`/bin/ctags"
 
 ### Playpilot
 
