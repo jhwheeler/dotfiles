@@ -65,6 +65,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'evanleck/vim-svelte'
 Plug 'leafgarland/typescript-vim'
+Plug 'alx741/vim-rustfmt'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -151,6 +152,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-svelte',
   \ 'coc-vimlsp',
+  \ 'coc-rust-analyzer',
   \  ]
 
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -279,3 +281,7 @@ let g:session_autoload='yes'
 let g:session_default_to_last='yes'
 let g:session_autosave='yes'
 let g:session_command_aliases = 1
+
+"" rustfmt
+let g:rustfmt_on_save = 1
+let g:rustfmt_backup = 0
