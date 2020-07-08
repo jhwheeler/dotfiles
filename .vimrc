@@ -142,7 +142,7 @@ endif
 "" Fugitive
 nnoremap <leader>gs :vertical Gstatus <bar> :vertical resize 50<CR>
 nmap <leader>gh :diffget //3<CR>
-nmap <leader> gu :diffget //2<CR>
+nmap <leader> gl :diffget //2<CR>
 
 
 "" CoC
@@ -247,7 +247,7 @@ let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --glob "!.git/*" --glob "!node_modules/*" --glob "!*/node_modules/*" --glob "!.jest/*" --glob "!.expo/*" --glob "!__sapper__/*" --glob "!*/__sapper__/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --glob "!.git/*" --glob "!node_modules/*" --glob "!*/node_modules/*" --glob "!.jest/*" --glob "!.expo/*" --glob "!__sapper__/*" --glob "!*/__sapper__/*" --glob "!*/bundle/*" --glob "!public/bundle/build.js" --color "always" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nnoremap <leader>f :Find<CR>
 
 " Allows you to put selected items in the quickfix list
@@ -282,7 +282,6 @@ nnoremap <leader>oqf<CR> :call QuickFixOpenAll()<CR>
 "" AsyncRun
 let g:asyncrun_open = 8
 nnoremap <leader>r :AsyncRun
-
 
 "" Airline
 let g:bufferline_echo = 0
