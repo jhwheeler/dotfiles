@@ -1,3 +1,8 @@
+# Use tmux if available
+if [ -z "$TMUX" ]; then
+  tmux attach -t default || tmux new -s default
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -59,6 +64,9 @@ export HISTCONTROL=ignoreboth:erasedups
 export LANG=en_US
 export LC_ALL=en_US.UTF-8
 
+# Used for code review (see ~/.gitconfig for how this is used)
+export REVIEW_BASE=master
+
 # Playpilot Fletch env vars
 export PLAYPILOT_PORT=8000
 export FLETCH_PORT=8001
@@ -103,7 +111,7 @@ alias terraform='/Applications/terraform'
 alias ping8='ping 8.8.8.8'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pyds='cd ~/Projects/Tutorials/Python_DataScience/Resources'
-# alias ctags="`brew --prefix`/bin/ctags"
+alias HAI='cd ~/Projects/Harmony/HAI'
 
 ### Playpilot
 
@@ -134,6 +142,12 @@ alias ytw='yarn test --watch'
 # Watson Time Tracker
 alias track='watson start playpilot'
 
+function expand-alias() {
+  zle _expand_alias
+  zle self-insert
+}
+zle -N expand-alias
+bindkey -M main ' ' expand-alias
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source ~/.iterm2_shell_integration.zsh
@@ -178,7 +192,7 @@ PROMPT='%D{%L:%M:%S}] '$PROMPT
 
 # FZF Config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --hidden  --no-ignore-vcs -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*}"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden  --no-ignore-vcs -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*,*/bundle/*}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='
 --height 96%
@@ -220,3 +234,4 @@ precmd_functions+=(_fix_cursor)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
