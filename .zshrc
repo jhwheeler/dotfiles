@@ -109,7 +109,9 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 alias rn='create-react-native-app'
 alias terraform='/Applications/terraform'
 alias ping8='ping 8.8.8.8'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# Why can't I use directory names in variables?
+# For some reason, `$DOTFILES=''~/Projects/dotfiles'` returns the error 'No such file or directory', so I have to repeat the path every time below.
+alias dotfiles='cp ~/.zshrc ~/Projects/dotfiles/.zshrc; cp ~/.vimrc ~/Projects/dotfiles/.vimrc; cp ~/.config/alacritty/alacritty.yml ~/Projects/dotfiles/alacritty.yml; cp ~/.tmux.conf ~/Projects/dotfiles/.tmux.conf; git status'
 alias pyds='cd ~/Projects/Tutorials/Python_DataScience/Resources'
 alias HAI='cd ~/Projects/Harmony/HAI'
 
