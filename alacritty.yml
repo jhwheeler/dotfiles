@@ -209,24 +209,6 @@ visual_bell:
 # The value `0.0` is completely transparent and `1.0` is opaque.
 background_opacity: 0.96
 
-# Mouse bindings
-#
-# Available fields:
-#   - mouse
-#   - action
-#   - mods (optional)
-#
-# Values for `mouse`:
-#   - Middle
-#   - Left
-#   - Right
-#   - Numeric identifier such as `5`
-#
-# All available `mods` and `action` values are documented in the key binding
-# section.
-mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
-
 mouse:
   # Click settings
   #
@@ -273,8 +255,8 @@ live_config_reload: true
 #   - (macOS) /bin/bash --login
 #   - (Linux) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
+shell:
+ program: /bin/zsh
 #  args:
 #    - --login
 
@@ -428,17 +410,17 @@ key_bindings:
 
   # (macOS only)
   #- { key: Key0,   mods: Command,         action: ResetFontSize    }
-  #- { key: Equals, mods: Command,         action: IncreaseFontSize }
+  - { key: Equals, mods: Command,         action: IncreaseFontSize }
   #- { key: Add,    mods: Command,         action: IncreaseFontSize }
   #- { key: Minus,  mods: Command,         action: DecreaseFontSize }
   #- { key: K,      mods: Command,         action: ClearHistory     }
   #- { key: K,      mods: Command,         chars: "\x0c"            }
-  #- { key: V,      mods: Command,         action: Paste            }
-  #- { key: C,      mods: Command,         action: Copy             }
+  - { key: V,      mods: Command,         action: Paste            }
+  - { key: C,      mods: Command,         action: Copy             }
   #- { key: H,      mods: Command,         action: Hide             }
-  #- { key: Q,      mods: Command,         action: Quit             }
+  - { key: Q,      mods: Command,         action: Quit             }
   #- { key: W,      mods: Command,         action: Quit             }
-  #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
+  - { key: F,      mods: Command|Control, action: ToggleFullscreen }
 
   - { key: Paste,                   action: Paste                            }
   - { key: Copy,                    action: Copy                             }
