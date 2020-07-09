@@ -88,6 +88,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
 
 call plug#end()
 
@@ -301,3 +303,6 @@ let g:session_command_aliases = 1
 "" rustfmt
 let g:rustfmt_on_save = 1
 let g:rustfmt_backup = 0
+
+"" vimux
+map <Leader>vp :VimuxPromptCommand<CR>
