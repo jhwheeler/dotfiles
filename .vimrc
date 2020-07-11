@@ -306,3 +306,5 @@ let g:rustfmt_backup = 0
 
 "" vimux
 map <Leader>vp :VimuxPromptCommand<CR>
+"" Zoom the tmux runner pane
+map <Leader>vz :VimuxZoomRunner<CR>+
