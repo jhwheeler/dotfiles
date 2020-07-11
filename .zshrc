@@ -27,9 +27,9 @@ plugins=(
   python
   npm
   man
-  zsh-autosuggestions
-  zsh-syntax-hilighting
+  fast-syntax-highlighting
   z
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
