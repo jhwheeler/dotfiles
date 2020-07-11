@@ -67,6 +67,9 @@ export LC_ALL=en_US.UTF-8
 # Used for code review (see ~/.gitconfig for how this is used)
 export REVIEW_BASE=master
 
+# bat syntax highlighting
+export BAT_THEME="Dracula"
+
 # Playpilot Fletch env vars
 export PLAYPILOT_PORT=8000
 export FLETCH_PORT=8001
