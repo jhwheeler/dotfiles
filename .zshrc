@@ -241,3 +241,5 @@ precmd_functions+=(_fix_cursor)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
+# For grv git client
+unalias grv
