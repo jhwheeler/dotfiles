@@ -148,6 +148,13 @@ alias ytw='yarn test --watch'
 # Watson Time Tracker
 alias track='watson start playpilot'
 
+# How Do I?
+alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
+
+# Less profane version of "The Fuck"
+eval $(thefuck --alias)
+alias opa='fuck'
+
 function expand-alias() {
   zle _expand_alias
   zle self-insert
