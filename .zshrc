@@ -119,6 +119,20 @@ alias dotfiles='cp ~/.zshrc ~/Projects/dotfiles/.zshrc; cp ~/.vimrc ~/Projects/d
 alias pyds='cd ~/Projects/Tutorials/Python_DataScience/Resources'
 alias HAI='cd ~/Projects/Harmony/HAI'
 
+# Watson Time Tracker
+alias track='watson start playpilot'
+
+# How Do I?
+alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
+
+# Less profane version of "The Fuck"
+eval $(thefuck --alias)
+alias opa='fuck'
+
+# bat is cat with syntax highlighting
+alias cat='bat'
+
+
 ### Playpilot
 
 # General
@@ -144,16 +158,6 @@ alias yspi='yarn start --useProdAPI --ios'
 alias yspa='yarn start --useProdAPI --android'
 alias yt='yarn test'
 alias ytw='yarn test --watch'
-
-# Watson Time Tracker
-alias track='watson start playpilot'
-
-# How Do I?
-alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
-
-# Less profane version of "The Fuck"
-eval $(thefuck --alias)
-alias opa='fuck'
 
 function expand-alias() {
   zle _expand_alias
