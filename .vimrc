@@ -83,7 +83,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'liuchengxu/space-vim-dark'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'skywind3000/asyncrun.vim'
@@ -96,7 +95,7 @@ call plug#end()
 
 
 "" Colors
-colorscheme space-vim-dark
+colorscheme fluidlan
 set termguicolors
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
