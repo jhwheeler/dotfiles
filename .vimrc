@@ -27,6 +27,7 @@ set incsearch
 set colorcolumn=0
 set synmaxcol=0
 set diffopt+=vertical
+set mouse=a
 
 " Give more space for displaying messages
 set cmdheight=2
