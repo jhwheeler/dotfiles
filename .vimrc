@@ -65,6 +65,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'sheerun/vim-polyglot'
+Plug 'fatih/vim-go'
 Plug 'evanleck/vim-svelte'
 Plug 'leafgarland/typescript-vim'
 Plug 'alx741/vim-rustfmt'
@@ -157,6 +158,7 @@ let g:coc_global_extensions = [
   \ 'coc-svelte',
   \ 'coc-vimlsp',
   \ 'coc-rust-analyzer',
+  \ 'coc-go',
   \  ]
 
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -217,6 +219,10 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 " Python path
 let g:python3_host_prog = $GLOBALINSTALLDIR . "/usr/bin/python3"
+
+" Go imports
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
 
 
 "" FZF
