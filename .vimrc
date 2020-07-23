@@ -92,12 +92,17 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
+Plug 'jhwheeler/fluidlan-vim'
 
 call plug#end()
 
 
 "" Colors
-colorscheme fluidlan
+" local version for testing (located in ~/.vim/colors)
+colorscheme fluidlan-vim
+" version from the plugin hosted on Github
+" colorscheme fluidlan
+
 set termguicolors
 hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
