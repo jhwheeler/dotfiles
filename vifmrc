@@ -1,11 +1,130 @@
+" Opens files in NeoVim
 set vicmd=nvim
 
+" Preview files in second pane
+view
+
+" Shows hidden files by default
+windo normal zo
+
+" Temporarily preserve deleted files
 set trash
 
+" Sane search highlighting
 set nohlsearch
 set incsearch
 
-mark h ~/
-mark pp ~/Projects/Playpilot/
+" Automatically resolve symbolic links on l or Enter
+set nofollowlinks
 
-set statusline="  %t%= %A %10u:%-7g %15E %20d  "
+" Status line
+" %t = current file or directory
+" %A = file permissions
+" %15E = size of current file(s)
+set statusline="  %t%= %A %15E "
+
+" Number of directories to store in history
+set history=100
+
+" Maximum number of changes that can be undone
+set undolevels=100
+
+" Run partially entered commands with unambiguous beginning
+" (e.g. :!Te instead of :!Terminal or :!Te<tab>)
+set fastrun
+
+" Use KiB, MiB, etc. instead of KB, MB, etc.
+set noiec
+
+" Show list of matches on tab completion in command-line mode
+set wildmenu
+
+" Ignore case in search unless it has at least one uppercase letter
+set ignorecase
+set smartcase
+
+"" Syntax highlighting in preview
+" Explicitly set highlight type for some extensions
+" 256-color terminal
+fileviewer *.js,*.ts,*.json,*.md, highlight -O xterm256 -s moria %c
+
+"" Default programs to open various filetypes
+
+" Images and PDFs
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.pdf open -a Preview.app
+
+" Pages & Word Docs
+filextype *.pages,*.docx,*.doc open -a Pages.app
+
+" Spreadsheets
+filextype *.xls,*.xlsx,*.numbers open -a Numbers.app
+"
+" Audio
+filextype *.wav,*.mp3,*.flac,*.ogg,*.m4a,*.wma,*.ape,*.ac3
+        \ open -a QuickTime\ Player.app
+
+" Video
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv,*.m2v,*.mov,*.webm,*.ts,*.m4v
+        \ open -a QuickTime\ Player.app,
+
+" Extract zip files
+filetype *.zip unzip %f
+fileviewer *.zip,*.jar,*.war,*.ear zip -sf %c
+
+" Extract tar archives
+filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz tar -xf %f
+fileviewer *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz tar -tf %f
+
+" Extract .bz2 archives
+filetype *.bz2 bzip2 -d %f
+
+" Extract .gz files
+filetype *.gz gunzip %f
+
+" Mount .dmg archives
+filetype *.dmg open
+
+" Open .pkg binaries
+filetype *.pkg open
+
+" Open all other files with default system programs (you can also remove all
+filetype * open
+
+
+"" Remaps
+
+" Start shell in current directory
+nnoremap s :shell<cr>
+
+" Display sorting dialog
+nnoremap S :sort<cr>
+
+" Toggle visibility of preview window
+nnoremap w :view<cr>
+vnoremap w :view<cr>gv
+
+" Open file in the background using its default program
+nnoremap gb :!open -g %f<cr>
+
+" Yank current directory path into the clipboard
+nnoremap yd :!printf %d | pbcopy<cr>
+
+" Yank current file path into the clipboard
+nnoremap yf :!printf %c:p | pbcopy<cr>
+
+" Mappings for faster renaming
+nnoremap I cw<c-a>
+nnoremap cc cw<c-u>
+nnoremap A cw<c-w>
+
+" Open vim to edit vifmrc and apply settings after returning to vifm
+nnoremap ,c :write | execute ':!nvim $MYVIFMRC' | restart<cr>
+
+" Toggle wrap setting on ,w key
+nnoremap ,w :set wrap!<cr>
+
+
+"" Marks
+
+mark h ~/
+
