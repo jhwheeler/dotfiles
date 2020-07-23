@@ -87,9 +87,6 @@ filetype *.dmg open
 " Open .pkg binaries
 filetype *.pkg open
 
-" Open all other files with default system programs (you can also remove all
-filetype * open
-
 
 "" Remaps
 
