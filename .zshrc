@@ -132,6 +132,9 @@ alias opa='fuck'
 # bat is cat with syntax highlighting
 alias cat='bat'
 
+# vifm
+alias v='vifm'
+
 
 ### Playpilot
 
