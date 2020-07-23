@@ -108,6 +108,16 @@ hi Normal     ctermbg=NONE guibg=NONE
 hi LineNr     ctermbg=NONE guibg=NONE
 hi SignColumn ctermbg=NONE guibg=NONE
 
+" Wrap commands in Preserve to keep window position
+function! Preserve(command)
+  " Preparation: save window state
+  let l:saved_winview = winsaveview()
+  " Run the command:
+  execute a:command
+  " Clean up: restore previous window position
+  call winrestview(l:saved_winview)
+endfunction
+
 
 "" Remaps
 nnoremap <silent> <leader>h :wincmd h<CR>
@@ -122,7 +132,8 @@ nnoremap <silent> <leader>- :vertical resize -5<CR>
 nnoremap <leader>ev :vsp ~/.vimrc<CR>
 nnoremap <leader>: :History:<CR>
 " Trim trailing whitespace
-nnoremap <silent> <F5> :let _s=@/ <bar> :%s/\s\+$//e <bar> :let @/=_s <bar> :nohl <bar> :unlet _s <CR>
+nnoremap <F5> :call Preserve("%s/\\s\\+$//e")<CR>
+
 
 "" EasyMotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
