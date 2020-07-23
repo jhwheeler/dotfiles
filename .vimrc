@@ -25,6 +25,7 @@ set splitright
 set undofile
 set incsearch
 set colorcolumn=0
+set noshowmode
 set synmaxcol=0
 set diffopt+=vertical
 set mouse=a
