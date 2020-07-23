@@ -307,9 +307,8 @@ let g:airline_theme='violet'
 "" Session
 set sessionoptions-=buffers
 set sessionoptions-=help
-let g:session_autoload='yes'
-let g:session_default_to_last='yes'
 let g:session_autosave='yes'
+let g:session_default_to_last='no'
 let g:session_command_aliases = 1
 
 "" rustfmt
