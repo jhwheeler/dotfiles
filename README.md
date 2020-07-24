@@ -6,3 +6,4 @@ My config files
 - Shell: [zsh](https://www.howtogeek.com/362409/what-is-zsh-and-why-should-you-use-it-instead-of-bash/)
 - Terminal: [alacritty](https://github.com/alacritty/alacritty)
 - Terminal multiplexer: [tmux](https://www.bugsnag.com/blog/benefits-of-using-tmux)
+- File manager: [vifm](https://wiki.vifm.info/index.php/Ideology)
