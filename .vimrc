@@ -29,6 +29,7 @@ set noshowmode
 set synmaxcol=0
 set diffopt+=vertical
 set mouse=a
+set wildmode=longest,list,full
 
 " Give more space for displaying messages
 set cmdheight=2
