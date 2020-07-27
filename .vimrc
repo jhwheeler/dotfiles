@@ -101,9 +101,9 @@ call plug#end()
 
 "" Colors
 " local version for testing (located in ~/.vim/colors)
-colorscheme fluidlan-vim
+" colorscheme fluidlan-vim
 " version from the plugin hosted on Github
-" colorscheme fluidlan
+colorscheme fluidlan
 
 set termguicolors
 hi Normal     ctermbg=NONE guibg=NONE
