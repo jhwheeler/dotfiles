@@ -93,6 +93,7 @@ Plug 'xolox/vim-session'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'jhwheeler/fluidlan-vim'
+Plug 'yuttie/comfortable-motion.vim'
 
 call plug#end()
 
