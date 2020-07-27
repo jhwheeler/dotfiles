@@ -122,19 +122,34 @@ endfunction
 
 
 "" Remaps
+
 nnoremap <silent> <leader>h :wincmd h<CR>
 nnoremap <silent> <leader>j :wincmd j<CR>
 nnoremap <silent> <leader>k :wincmd k<CR>
 nnoremap <silent> <leader>l :wincmd l<CR>
 nnoremap <silent> <leader>u :UndotreeShow<CR>
+
 " Show file tree
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
 nnoremap <leader>ev :vsp ~/.vimrc<CR>
 nnoremap <leader>: :History:<CR>
+
 " Trim trailing whitespace
 nnoremap <F5> :call Preserve("%s/\\s\\+$//e")<CR>
+
+" Prefill substitute
+nnoremap <leader>s :%s/
+
+" Easy save and quit
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :q<CR>
+nnoremap <leader>x :x<CR>
+
+" Source .vimrc quickly
+nnoremap <leader>% :source ~/.vimrc<CR>
 
 
 "" EasyMotion
