@@ -53,6 +53,10 @@ export PATH=$PATH:/Users/alacritas/platform-tools
 export PATH=$PATH:/Users/alacritas/Applications/terraform
 export PATH=$PATH:/opt/anaconda3/bin
 
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 # Deno
 export DENO_INSTALL="/Users/alacritas/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
