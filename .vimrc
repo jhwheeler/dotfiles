@@ -95,6 +95,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'jhwheeler/fluidlan-vim'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -172,6 +173,10 @@ endif
 nnoremap <leader>gs :vertical Gstatus <bar> :vertical resize 50<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
+
+"" Emmet
+map ,, <C-y>,
+imap ,, <C-y>,
 
 
 "" CoC
