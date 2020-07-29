@@ -122,6 +122,7 @@ alias ping8='ping 8.8.8.8'
 alias dotfiles='cp ~/.zshrc ~/Projects/dotfiles/.zshrc; cp ~/.vimrc ~/Projects/dotfiles/.vimrc; cp ~/.config/alacritty/alacritty.yml ~/Projects/dotfiles/alacritty.yml; cp ~/.tmux.conf ~/Projects/dotfiles/.tmux.conf; cd ~/Projects/dotfiles; cp ~/.vifm/vifmrc ~/Projects/dotfiles/vifmrc; git status'
 alias pyds='cd ~/Projects/Tutorials/Python_DataScience/Resources'
 alias HAI='cd ~/Projects/Harmony/HAI'
+alias config='nvim ~/.vimrc ~/.zshrc ~/.tmux.conf ~/.config/alacritty/alacritty.yml ~/.config/vifm/vifmrc'
 
 # Watson Time Tracker
 alias track='watson start playpilot'
