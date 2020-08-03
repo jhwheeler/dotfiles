@@ -240,9 +240,8 @@ export FZF_DEFAULT_OPTS='
 --reverse
 --preview "cat {}"
 --bind ctrl-a:select-all
---color=fg:#b647cf,bg:#000000,hl:#2ef29d
---color=fg+:#bec3cc,bg+:#211e1e,hl+:#36ebc4
 '
+
 
 ## Vim mode in ZSH
 # Activate vim mode
