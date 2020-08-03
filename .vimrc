@@ -156,8 +156,11 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q<CR>
 nnoremap <leader>x :x<CR>
 
+" Close all buffers except the current one
+nnoremap <leader>bda :<c-u>up <bar> %bd <bar> e#<cr>
+
 " Source .vimrc quickly
-nnoremap <leader>% :source ~/.vimrc<CR>
+nnoremap <silent> <leader>% :source ~/.vimrc<CR>
 
 
 "" EasyMotion
