@@ -53,6 +53,13 @@ export PATH=$PATH:/Users/alacritas/platform-tools
 export PATH=$PATH:/Users/alacritas/Applications/terraform
 export PATH=$PATH:/opt/anaconda3/bin
 
+# Utils
+export PATH=$PATH:~/utils
+
+# Lynx web browser
+export LYNX_LSS=$HOME/.config/lynx/lynx.lss
+export LYNX_CFG=$HOME/.config/lynx/lynx.cfg
+
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
@@ -110,9 +117,13 @@ alias :q='exit'
 
 # Miscellaneous Shortcuts
 alias vim='nvim'
-alias zshrc='nvim ~/.zshrc'
 alias vimrc='nvim ~/.vimrc'
-alias sourcez='source ~/.zshrc'
+alias bashrc='nvim ~/.bashrc'
+alias bashpr='nvim ~/.bash_profile'
+alias zshrc='nvim ~/.zshrc'
+alias srcz='source ~/.zshrc'
+alias srcb='source ~/.bashrc'
+alias c='clear'
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 alias rn='create-react-native-app'
 alias terraform='/Applications/terraform'
@@ -123,9 +134,14 @@ alias dotfiles='cp ~/.zshrc ~/Projects/dotfiles/.zshrc; cp ~/.vimrc ~/Projects/d
 alias pyds='cd ~/Projects/Tutorials/Python_DataScience/Resources'
 alias HAI='cd ~/Projects/Harmony/HAI'
 alias config='nvim ~/.vimrc ~/.zshrc ~/.tmux.conf ~/.config/alacritty/alacritty.yml ~/.config/vifm/vifmrc'
+alias inv='t report -G --from "2020-07-16" --to "2020-07-31" | ./invox -i MC81 -d "1 August 2020"'
 
 # Watson Time Tracker
-alias track='watson start playpilot'
+alias t='watson'
+alias tp='watson start playpilot'
+
+# Quick search w/ Lynx
+alias s='lynx_search'
 
 # How Do I?
 alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
