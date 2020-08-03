@@ -88,11 +88,11 @@ Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
 Plug 'jhwheeler/fluidlan-vim'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'mattn/emmet-vim'
@@ -337,7 +337,7 @@ let g:session_command_aliases = 1
 let g:rustfmt_on_save = 1
 let g:rustfmt_backup = 0
 
-"" vimux
-map <Leader>vp :VimuxPromptCommand<CR>
-"" Zoom the tmux runner pane
-map <Leader>vz :VimuxZoomRunner<CR>+
+
+"" Goyo
+let g:goyo_height='100%'
+let g:goyo_width=85
