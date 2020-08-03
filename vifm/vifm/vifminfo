@@ -1,0 +1,189 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'H
+	/Users/alacritas/
+	..
+1595521010
+'b
+	/Users/alacritas/bin/
+	..
+1595521010
+'h
+	/Users/alacritas/
+	..
+1595521010
+
+# Bookmarks:
+
+# TUI:
+al
+q1
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/Users/alacritas
+	Music
+11
+d/Users/alacritas/Music
+	BULGARA
+3
+d/Users/alacritas/Music/BULGARA
+	..
+0
+d/Users/alacritas/Music
+	iTunes
+24
+d/Users/alacritas/Music/iTunes
+	Previous iTunes Libraries
+2
+d/Users/alacritas/Music/iTunes/Previous iTunes Libraries
+	..
+0
+d/Users/alacritas/Music/iTunes
+	..
+0
+d/Users/alacritas/Music
+	..
+0
+d/Users/alacritas
+	nltk_data
+19
+d/Users/alacritas/nltk_data
+	corpora
+1
+d/Users/alacritas/nltk_data/corpora
+	..
+0
+d/Users/alacritas/nltk_data
+	..
+0
+d/Users/alacritas
+	Boostnote
+4
+d/Users/alacritas/Boostnote
+	notes
+1
+d/Users/alacritas/Boostnote/notes
+	0f7d6db2-c6aa-48c5-b01c-70843cdbe2b9.cson
+1
+d/Users/alacritas/Boostnote
+	notes
+1
+d/Users/alacritas
+	Boostnote
+4
+d/Users
+	alacritas
+3
+d/
+	Users
+3
+d/Users
+	alacritas
+3
+d/Users/alacritas
+	Applications
+3
+d/Users/alacritas/Applications
+	..
+0
+d/Users/alacritas
+	Applications
+3
+d/Users/alacritas/Applications
+	..
+0
+d/Users/alacritas
+	Applications
+3
+d/Users/alacritas/Applications
+	Brave Browser Apps.localized
+1
+d/Users/alacritas/Applications/Brave Browser Apps.localized
+	..
+0
+d/Users/alacritas/Applications
+	Brave Browser Apps.localized
+1
+d/Users/alacritas
+	AndroidStudioProjects
+2
+d/Users
+	alacritas
+3
+d/Users/alacritas
+	.vifm
+42
+d/Users/alacritas/.vifm
+	.vifmrc
+1
+d
+
+# Right window history (oldest to newest):
+D/Users/alacritas
+	..
+0
+D/etc
+	..
+0
+D/
+	etc
+8
+D/etc
+	group
+40
+D/
+	cores
+6
+D/Users/alacritas
+	fluidlan.vim
+25
+D
+
+# Command line history (oldest to newest):
+:bd
+:only
+:vsp ~
+:help
+:e .vifmrc
+:mkdir .vifm
+:e ~/.vifm/.vifmrc
+:q
+
+# Search history (oldest to newest):
+/Music
+/hosts
+/vifm
+
+# Prompt history (oldest to newest):
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/Users/alacritas/.local/share/vifm/Trash/000_localhost.key
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/Users/alacritas/.local/share/vifm/Trash/000_download
+	/Users/alacritas/download
+t/Users/alacritas/.local/share/vifm/Trash/000_localhost.crt
+	/Users/alacritas/localhost.crt
+t/Users/alacritas/.local/share/vifm/Trash/000_localhost.key
+	/Users/alacritas/localhost.key
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].1
+]F
+s0

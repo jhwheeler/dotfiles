@@ -1,0 +1,25 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+    ~/.bashrc: bash/bashrc
+    ~/.bash_profile: bash/bash_profile
+    ~/.inputrc: inputrc
+    ~/.zshrc: zshrc
+    ~/.config/alacritty: alacritty
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore_global: git/gitignore_global
+    ~/.git_template: git/git_template
+    ~/.fzf.bash: fzf/fzf.bash
+    ~/.fzf.zsh: fzf/fzf.zsh
+    ~/.config/lynx: lynx
+    ~/.config/karabiner: karabiner
+    ~/.config/vifm: vifm
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]

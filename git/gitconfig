@@ -1,0 +1,47 @@
+[filter "lfs"]
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+[user]
+  name = Jackson Holiday Wheeler
+  email = jhwheeler@gmail.com
+[credential]
+  helper = osxkeychain
+[pull]
+  rebase = false
+[core]
+  excludesfile = /Users/alacritas/.gitignore_global
+; [url "git@github.com:"]
+; 	insteadOf = https://github.com/
+[alias]
+  c = commit
+  co = checkout
+  br = branch
+  d = diff
+  p = add --patch
+  st = status
+  aa = add .
+
+  # list files which have changed since REVIEW_BASE
+  # (REVIEW_BASE defaults to 'master' in my zshrc)
+  files = !git diff --name-only $(git merge-base HEAD \"$REVIEW_BASE\")
+
+  # Same as above, but with a diff stat instead of just names
+  # (better for interactive use)
+  stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
+
+  # Open all files changed since REVIEW_BASE in nvim tabs
+  # Then, run fugitive's :Gdiff in each tab, and finally
+  # tell nvim-gitgutter to show +/- for changes since REVIEW_BASE
+  review = !nvim -p $(git files) +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+
+  # Same as the above, except specify names of files as arguments,
+  # instead of opening all files:
+  # git reviewone foo.js bar.js
+  reviewone = !nvim -p +\"tabdo Gdiff $REVIEW_BASE\" +\"let g:gitgutter_diff_base = '$REVIEW_BASE'\"
+
+[init]
+  templatedir = ~/.git_template
+[commit]
+  verbose = true

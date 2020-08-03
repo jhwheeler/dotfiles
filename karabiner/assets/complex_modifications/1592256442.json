@@ -1,0 +1,31 @@
+{
+  "title": "Caps and ctrl to esc. Caps to ctrl.",
+  "rules": [
+    {
+      "description": "Map caps and right_control to left_control, caps to escape",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "caps_lock",
+            "modifiers": {
+              "mandatory": [
+                "right_control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "escape"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
