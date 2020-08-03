@@ -124,6 +124,7 @@ endfunction
 
 "" Remaps
 
+" Window movement
 nnoremap <silent> <leader>h :wincmd h<CR>
 nnoremap <silent> <leader>j :wincmd j<CR>
 nnoremap <silent> <leader>k :wincmd k<CR>
@@ -132,10 +133,16 @@ nnoremap <silent> <leader>u :UndotreeShow<CR>
 
 " Show file tree
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+
+" Resize
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>
-nnoremap <leader>ev :vsp ~/.vimrc<CR>
-nnoremap <leader>: :History:<CR>
+
+" vimrc quick access
+nnoremap <silent> <leader>ev :vsp ~/.vimrc<CR>
+
+" Command history
+nnoremap <silent> <leader>: :History:<CR>
 
 " Trim trailing whitespace
 nnoremap <F5> :call Preserve("%s/\\s\\+$//e")<CR>
@@ -173,6 +180,7 @@ endif
 nnoremap <leader>gs :vertical Gstatus <bar> :vertical resize 50<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
+
 
 "" Emmet
 map ,, <C-y>,
@@ -315,9 +323,11 @@ endfunction
 
 nnoremap <leader>oqf<CR> :call QuickFixOpenAll()<CR>
 
+
 "" AsyncRun
 let g:asyncrun_open = 8
 nnoremap <leader>r :AsyncRun
+
 
 "" Airline
 let g:bufferline_echo = 0
@@ -326,12 +336,14 @@ autocmd VimEnter *
       \ .bufferline#get_status_string()
 let g:airline_theme='violet'
 
+
 "" Session
 set sessionoptions-=buffers
 set sessionoptions-=help
 let g:session_autosave='yes'
 let g:session_default_to_last='no'
 let g:session_command_aliases = 1
+
 
 "" rustfmt
 let g:rustfmt_on_save = 1
