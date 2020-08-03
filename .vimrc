@@ -200,6 +200,10 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ 'coc-rust-analyzer',
   \ 'coc-go',
+  \ 'coc-emmet',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-tsserver',
   \  ]
 
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -294,7 +298,7 @@ let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --glob "!.git/*" --glob "!node_modules/*" --glob "!*/node_modules/*" --glob "!.jest/*" --glob "!.expo/*" --glob "!__sapper__/*" --glob "!*/__sapper__/*" --glob "!*/bundle/*" --glob "!public/bundle/build.js" --color "always" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --glob "!.git/*" --glob "!node_modules/*" --glob "!*/node_modules/*" --glob "!.jest/*" --glob "!.expo/*" --glob "!__sapper__/*" --glob "!*/__sapper__/*" --glob "!*/bundle/*" --glob "!public/bundle/build.js" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nnoremap <leader>f :Find<CR>
 
 " Allows you to put selected items in the quickfix list
