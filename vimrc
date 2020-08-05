@@ -97,6 +97,7 @@ Plug 'jhwheeler/fluidlan-vim'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'mattn/emmet-vim'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -361,3 +362,7 @@ let g:rustfmt_backup = 0
 "" Goyo
 let g:goyo_height='100%'
 let g:goyo_width=85
+
+"" GitGutter
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
