@@ -277,3 +277,5 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # For grv git client
 unalias grv
+
+[ -s "/Users/alacritas/.scm_breeze/scm_breeze.sh" ] && source "/Users/alacritas/.scm_breeze/scm_breeze.sh"

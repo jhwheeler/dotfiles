@@ -210,3 +210,5 @@ alias ytw='yarn test --watch'
 function take() {
   mkdir $1 && cd $1
 }
+
+[ -s "/Users/alacritas/.scm_breeze/scm_breeze.sh" ] && source "/Users/alacritas/.scm_breeze/scm_breeze.sh"
