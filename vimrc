@@ -96,6 +96,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'jhwheeler/fluidlan-vim'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'mattn/emmet-vim'
+Plug 'AndrewRadev/splitjoin.vim'
 
 call plug#end()
 
