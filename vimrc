@@ -344,6 +344,8 @@ autocmd VimEnter *
       \ let &statusline='%{bufferline#refresh_status()}'
       \ .bufferline#get_status_string()
 let g:airline_theme='violet'
+" For GitGutter integration
+let g:airline#extensions#hunks#non_zero_only = 1
 
 
 "" Session
