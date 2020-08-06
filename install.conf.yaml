@@ -13,6 +13,7 @@
     ~/.vim/maps.vim: vim/maps.vim
     ~/.vim/plugins.vim: vim/plugins.vim
     ~/.vim/doc: vim/doc
+    ~/.vim/spell: vim/spell
     ~/.bashrc: bash/bashrc
     ~/.bash_profile: bash/bash_profile
     ~/.inputrc: inputrc
