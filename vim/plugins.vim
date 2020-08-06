@@ -1,59 +1,3 @@
-syntax on
-
-filetype plugin indent on
-
-set hidden
-set noerrorbells
-set tabstop=2 softtabstop=2
-set shiftwidth=2
-set expandtab
-set ignorecase
-set smartcase
-set noswapfile
-set encoding=utf8
-set synmaxcol=120
-set number
-set relativenumber
-set nobackup
-set nowritebackup
-set undodir=~/.vim/undodir
-set history=3000
-set undolevels=1000
-set hlsearch
-set splitbelow
-set splitright
-set undofile
-set incsearch
-set colorcolumn=0
-set noshowmode
-set synmaxcol=0
-set diffopt+=vertical
-set mouse=a
-set wildmode=longest,list,full
-
-" Give more space for displaying messages
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=50
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-highlight clear SignColumn
-
-let mapleader = " "
-
-"" File tree (netrw)
-let g:netrw_browse_split=4
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-let g:netrw_liststyle = 3
-let g:netrw_list_hide=netrw_gitignore#Hide()
-" Hide hidden files
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-
 "" Plugins
 
 " Download Vim Plug if not already downloaded
@@ -98,71 +42,13 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'mattn/emmet-vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'j5shi/CommandlineComplete.vim'
 
 call plug#end()
 
 
-"" Colors
-" local version for testing (located in ~/.vim/colors)
-" colorscheme fluidlan-vim
-" version from the plugin hosted on Github
-colorscheme fluidlan
 
-set termguicolors
-hi Normal     ctermbg=NONE guibg=NONE
-hi LineNr     ctermbg=NONE guibg=NONE
-hi SignColumn ctermbg=NONE guibg=NONE
-
-" Wrap commands in Preserve to keep window position
-function! Preserve(command)
-  " Preparation: save window state
-  let l:saved_winview = winsaveview()
-  " Run the command:
-  execute a:command
-  " Clean up: restore previous window position
-  call winrestview(l:saved_winview)
-endfunction
-
-
-"" Remaps
-
-" Window movement
-nnoremap <silent> <leader>h :wincmd h<CR>
-nnoremap <silent> <leader>j :wincmd j<CR>
-nnoremap <silent> <leader>k :wincmd k<CR>
-nnoremap <silent> <leader>l :wincmd l<CR>
-nnoremap <silent> <leader>u :UndotreeShow<CR>
-
-" Show file tree
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-
-" Resize
-nnoremap <silent> <leader>+ :vertical resize +5<CR>
-nnoremap <silent> <leader>- :vertical resize -5<CR>
-
-" vimrc quick access
-nnoremap <silent> <leader>ev :vsp ~/.vimrc<CR>
-
-" Command history
-nnoremap <silent> <leader>: :History:<CR>
-
-" Trim trailing whitespace
-nnoremap <F5> :call Preserve("%s/\\s\\+$//e")<CR>
-
-" Prefill substitute
-nnoremap <leader>s :%s/
-
-" Easy save and quit
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :q<CR>
-nnoremap <leader>x :x<CR>
-
-" Close all buffers except the current one
-nnoremap <leader>bda :<c-u>up <bar> %bd <bar> e#<cr>
-
-" Source .vimrc quickly
-nnoremap <silent> <leader>% :source ~/.vimrc<CR>
+"" Plugin Settings
 
 
 "" EasyMotion
@@ -352,6 +238,7 @@ let g:airline#extensions#hunks#non_zero_only = 1
 set sessionoptions-=buffers
 set sessionoptions-=help
 let g:session_autosave='yes'
+let g:session_autoload='no'
 let g:session_default_to_last='no'
 let g:session_command_aliases = 1
 
