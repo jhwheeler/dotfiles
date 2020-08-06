@@ -1,45 +1,51 @@
-syntax on
-
-filetype plugin indent on
-
 " Source custom mappings and plugins from ~/.vim
 runtime maps.vim
 runtime plugins.vim
 
-set hidden
-set noerrorbells
-set tabstop=2 softtabstop=2
-set shiftwidth=2
-set expandtab
-set ignorecase
-set smartcase
-set noswapfile
-set encoding=utf8
-set synmaxcol=120
+syntax on                     " syntax highlighting
+
+filetype plugin indent on     " filetype detection
+
+set hidden                    " open new buffers without saving the current one
+set noerrorbells              " silence error bells
+set expandtab                 " tabs are spaces
+set tabstop=2 softtabstop=2   " two space indent
+set shiftwidth=2              " two space shift
+set ignorecase                " ignore case by default...
+set smartcase                 " ...but respect case once you use uppercase letters
+set history=3000              " save command history
+set encoding=utf8             " support unicode
+set colorcolumn=0             " don't highlight columns
+set noshowmode                " hide mode (airline shows it already)
+set synmaxcol=0               " don't limit syntax highlighting
+set mouse=a                   " allow the mouse
+
+" See both current line number and relative numbers above/below
 set number
 set relativenumber
-set nobackup
-set nowritebackup
-set undodir=~/.vim/undodir
-set history=3000
-set undolevels=1000
+
+" Better defaults for splits
 set splitbelow
 set splitright
+
+" Undo to you heart's content
+set undolevels=1000
 set undofile
-set incsearch
-set colorcolumn=0
-set noshowmode
-set synmaxcol=0
-set diffopt+=vertical
-set mouse=a
+set undodir=~/.vim/undodir
+
+" You don't need swap files or backups if you have an undodir and Git
+set noswapfile
+set nobackup
+set nowritebackup
 
 " Wildmenu settings; see also plugin/wildignore.vim
 set wildmenu                " Use wildmenu
 set wildmode=list:longest   " Tab press completes and lists
 silent! set wildignorecase  " Case insensitive, if supported
 
-" Highlight completed searches; clear on reload
+" Highlight searches; clear on reload
 set hlsearch
+set incsearch
 if 1
   nohlsearch
 endif
@@ -57,16 +63,6 @@ set cmdheight=2
 set updatetime=50
 
 highlight clear SignColumn
-
-"" File tree (netrw)
-let g:netrw_browse_split=4
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-let g:netrw_liststyle = 3
-let g:netrw_list_hide=netrw_gitignore#Hide()
-" Hide hidden files
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-
 
 "" Colors
 

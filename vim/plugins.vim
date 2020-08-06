@@ -9,46 +9,64 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible'                            " basic defaults
+Plug 'tpope/vim-unimpaired'                          " variety of useful bracket maps
+Plug 'tpope/vim-commentary'                          " (un)comment code blocks
+Plug 'tpope/vim-surround'                            " edit surrounding tags easily
+Plug 'tpope/vim-repeat'                              " repeat commands, not just motions
+Plug 'tpope/vim-eunuch'                              " sugar for UNIX shell commands
+Plug 'tpope/vim-vinegar'                             " extend netrw file tree
+Plug 'easymotion/vim-easymotion'                     " move around the buffer even faster
+Plug 'mbbill/undotree'                               " visualize undo history
+Plug 'yuttie/comfortable-motion.vim'                 " smooth scrolling
+Plug 'AndrewRadev/splitjoin.vim'                     " split/join single/multiline blocks/functions
+Plug 'junegunn/goyo.vim'                             " distraction-free editing (for prose/documentation)
+Plug 'skywind3000/asyncrun.vim'                      " run shell commands asynchronously
+Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocomplete/intellisense
+Plug 'j5shi/CommandlineComplete.vim'                 " autocomplete for command mode
+Plug 'jhwheeler/fluidlan-vim'                        " custom color scheme
+
+" Status line
+Plug 'vim-airline/vim-airline'
+Plug 'bling/vim-bufferline'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Fuzzy finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Session management
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+" Integrated Tmux navigation
+Plug 'christoomey/vim-tmux-navigator'
+
+" Language plugins
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go'
 Plug 'evanleck/vim-svelte'
 Plug 'leafgarland/typescript-vim'
 Plug 'alx741/vim-rustfmt'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-vinegar'
-Plug 'easymotion/vim-easymotion'
-Plug 'vim-utils/vim-man'
-Plug 'mbbill/undotree'
-Plug 'vim-airline/vim-airline'
-Plug 'bling/vim-bufferline'
-Plug 'majutsushi/tagbar'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'jhwheeler/fluidlan-vim'
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'mattn/emmet-vim'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'j5shi/CommandlineComplete.vim'
 
 call plug#end()
 
 
 
 "" Plugin Settings
+
+"" Netrw
+let g:netrw_browse_split=4
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+let g:netrw_liststyle = 3
+let g:netrw_list_hide=netrw_gitignore#Hide()
+" Hide hidden files
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 
 "" EasyMotion
@@ -68,9 +86,11 @@ endif
 
 
 "" Fugitive
+set diffopt+=vertical " vertical diffs
 nnoremap <leader>gs :vertical Gstatus <bar> :vertical resize 50<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
+nmap <leader>gc :Gcommit<CR>
 
 
 "" Emmet
