@@ -6,6 +6,7 @@
 
 - link:
     ~/.dotfiles: ''
+    ~/Brewfile: brew/Brewfile
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vim/vimrc
     ~/.vim/plugin: vim/plugin
