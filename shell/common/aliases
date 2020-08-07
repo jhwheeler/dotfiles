@@ -29,9 +29,8 @@ alias wit='exit'
 alias :x='exit'
 alias :q='exit'
 
+# Config
 export DOTFILES="~/Projects/dotfiles"
-
-# Miscellaneous Shortcuts
 alias vim='nvim'
 alias vimrc="nvim $DOTFILES/vim/vimrc"
 alias bashrc='nvim $DOTFILES/shell/bash/bashrc'
@@ -42,13 +41,11 @@ alias srcb='source ~/.bashrc'
 alias config='nvim $DOTFILES'
 alias dotfiles='~/.dotfiles/install'
 
+# Miscellaneous Shortcuts
 alias c="clear"
 alias cdl="cd $1 && ls"
-alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 alias ping8='ping 8.8.8.8'
-
-# Suppress message telling you to use zsh instead of bash
-export BASH_SILENCE_DEPRECATION_WARNING=1
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 
 # Watson Time Tracker
 alias t='watson'
@@ -67,10 +64,12 @@ alias cat='bat'
 alias v='vifm'
 
 # Playpilot
-
 alias n='npm run'
 alias nd='npm run dev'
 alias ndprod='npm run dev --prod'
 alias ns='npm run start'
 alias yd='yarn dev'
 alias ys='yarn start'
+
+# Suppress message telling you to use zsh instead of bash
+export BASH_SILENCE_DEPRECATION_WARNING=1
