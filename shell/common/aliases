@@ -1,0 +1,76 @@
+## Aliases
+
+# Always copy recursively & explain what was done
+alias cp='cp -rv'
+# List contents with colors for file types, (A)lmost all hidden files (without . and ..), in (C)olumns, with class indicators (F)
+alias ls='ls -ACFG'
+# List contents with colors for file types, (a)ll hidden entries (including . and ..), use (l)ong listing format, with class indicators (F)
+alias ll='ls -alFG'
+# Explain (v) what was done when moving a file
+alias mv='mv -v'
+# Create any non-existent (p)arent directories and explain (v) what was done
+alias mkdir='mkdir -pv'
+# Always try to (c)ontinue getting a partially-downloaded file
+alias wget='wget -c'
+
+# Copying/pasting to/from clipboard
+alias pbcopy='xclip -sel clip'
+alias pbpaste='xclip -sel clip -o'
+
+# Common typos
+alias exti='exit'
+alias eit='exit'
+alias eitx='exit'
+alias eixt='exit'
+alias eitx='exit'
+alias xit='exit'
+alias wxit='exit'
+alias wit='exit'
+alias :x='exit'
+alias :q='exit'
+
+export DOTFILES="~/Projects/dotfiles"
+
+# Miscellaneous Shortcuts
+alias vim='nvim'
+alias vimrc="nvim $DOTFILES/vim/vimrc"
+alias bashrc='nvim $DOTFILES/shell/bash/bashrc'
+alias bashpr='nvim $DOTFILES/shell/bash/bash_profile'
+alias zshrc='nvim $DOTFILES/shell/zsh/zshrc'
+alias srcz='source ~/.zshrc'
+alias srcb='source ~/.bashrc'
+alias config='nvim $DOTFILES'
+alias dotfiles='~/.dotfiles/install'
+
+alias c="clear"
+alias cdl="cd $1 && ls"
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+alias ping8='ping 8.8.8.8'
+
+# Suppress message telling you to use zsh instead of bash
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# Watson Time Tracker
+alias t='watson'
+alias tp='watson start playpilot'
+
+# Quick search w/ Lynx
+alias s='lynx_search'
+
+# How Do I?
+alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
+
+# bat is cat with syntax highlighting
+alias cat='bat'
+
+# vifm
+alias v='vifm'
+
+# Playpilot
+
+alias n='npm run'
+alias nd='npm run dev'
+alias ndprod='npm run dev --prod'
+alias ns='npm run start'
+alias yd='yarn dev'
+alias ys='yarn start'

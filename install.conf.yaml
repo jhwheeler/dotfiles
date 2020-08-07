@@ -6,30 +6,53 @@
 
 - link:
     ~/.dotfiles: ''
+
+    # Package manager
     ~/Brewfile: brew/Brewfile
+
+    # Terminal
+    ~/.config/alacritty: alacritty
+
+    # Terminal multiplexer
     ~/.tmux.conf: tmux.conf
+
+    # Vim
     ~/.vimrc: vim/vimrc
     ~/.vim/plugin: vim/plugin
     ~/.vim/maps.vim: vim/maps.vim
     ~/.vim/plugins.vim: vim/plugins.vim
     ~/.vim/doc: vim/doc
     ~/.vim/spell: vim/spell
-    ~/.bashrc: bash/bashrc
-    ~/.bash_profile: bash/bash_profile
-    ~/.inputrc: inputrc
-    ~/.zshrc: zshrc
-    ~/.config/alacritty: alacritty
+
+    # Shell
+    ~/.shell/env: shell/common/env
+    ~/.bash_aliases: shell/common/aliases
+    ~/.bash_profile: shell/bash/bash_profile
+    ~/.bashrc: shell/bash/bashrc
+    ~/.inputrc: shell/bash/inputrc
+    ~/.zshrc: shell/zsh/zshrc
+
+    # Git
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
     ~/.git_template: git/git_template
+
+    # Fuzzy finder
     ~/.fzf.bash: fzf/fzf.bash
     ~/.fzf.zsh: fzf/fzf.zsh
+
+    # Text browser
     ~/.config/lynx: lynx
-    ~/.config/karabiner: karabiner
+
+    # File manager
     ~/.config/vifm: vifm
+
+    # Keyboard remapper (MacOS only)
+    ~/.config/karabiner: karabiner
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [mkdir -p ~/.config, Creating config directory]
+  - [mkdir -p ~/.shell, Creating shell config directory]
     # If you haven't already, run prefix-I with tmux open after doing this to reload tmux and install the plugins
   - [ if test -d "~/.tmux/plugins/tpm"; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi ]

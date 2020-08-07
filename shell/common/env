@@ -1,0 +1,67 @@
+# Use tmux if available
+if [ -z "$TMUX" ]; then
+  tmux attach -t default || tmux new -s default
+fi
+
+# Use Vim
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
+# SCM Breeze
+
+[ -s "/Users/alacritas/.scm_breeze/scm_breeze.sh" ] && source "/Users/alacritas/.scm_breeze/scm_breeze.sh"
+
+
+# Vim
+export PATH=$PATH:~/.vimpkg/bin
+
+# Utils
+export PATH=$PATH:~/utils
+
+# Lynx web browser
+export LYNX_LSS=$HOME/.config/lynx/lynx.lss
+export LYNX_CFG=$HOME/.config/lynx/lynx.cfg
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# Android
+export ANDROID_SDK=/Users/alacritas/Library/Android/sdk
+export PATH=$PATH:/Users/alacritas/platform-tools
+
+# Deno
+export DENO_INSTALL="/Users/alacritas/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# This removes repeated commands in terminal history
+export HISTCONTROL=ignoreboth:erasedups
+
+# Ensure CLI programs run in English
+export LANG=en_US
+export LC_ALL=en_US.UTF-8
+
+# Used for code review (see ~/.gitconfig for how this is used)
+export REVIEW_BASE=master
+
+# bat syntax highlighting
+export BAT_THEME="Dracula"
+
+# Playpilot Fletch env vars
+export PLAYPILOT_PORT=8000
+export FLETCH_PORT=8001
+# export PLAYPILOT_HOST=$(ifconfig docker0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
+export PLAYPILOT_HOST=127.0.0.1 # TEMPORARY
+
+# FZF Config
+export FZF_DEFAULT_COMMAND='rg --files --hidden  --no-ignore-vcs -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*,*/bundle/*}"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='
+--height 96%
+--reverse
+--preview "cat {}"
+--bind ctrl-a:select-all
+'

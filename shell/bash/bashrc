@@ -1,0 +1,49 @@
+# Source modular configs
+source ~/.shell/env
+
+# Source aliases
+# Ignore if already exists
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi
+
+## Vim mode in Bash
+
+# Activate vim mode
+set -o vi
+
+# TODO: Figure out why the cursor isn't changing in insert mode
+
+# Remove mode-switching delay
+KEYTIMEOUT=1
+
+
+## Custom Prompt
+
+# colours
+txtcyn='\[\e[0;96m\]' # Cyan
+txtpur='\[\e[0;35m\]' # Purple
+txtwht='\[\e[0;37m\]' # White
+txtrst='\[\e[0m\]' # Text Reset
+
+# assign colours to prompt segments
+pathC="${txtcyn}"
+gitC="${txtpur}"
+pointerC="${txtwht}"
+normalC="${txtrst}"
+
+# get name of branch and wrap in parens
+gitBranch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+# build the prompt
+export PS1="${pathC}\w ${gitC}\$(gitBranch) ${pointerC}\$${normalC} "
+
+# FZF (full config is in ~/.shell/env)
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+## Custom functions
+
+function take() {
+  mkdir $1 && cd $1
+}
