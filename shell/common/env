@@ -11,15 +11,13 @@ else
 fi
 
 # SCM Breeze
-
 [ -s "/Users/alacritas/.scm_breeze/scm_breeze.sh" ] && source "/Users/alacritas/.scm_breeze/scm_breeze.sh"
-
 
 # Vim
 export PATH=$PATH:~/.vimpkg/bin
 
-# Utils
-export PATH=$PATH:~/utils
+# Scripts
+export PATH=$PATH:~/scripts
 
 # Lynx web browser
 export LYNX_LSS=$HOME/.config/lynx/lynx.lss
