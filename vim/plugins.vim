@@ -243,7 +243,8 @@ nnoremap <leader>oqf<CR> :call QuickFixOpenAll()<CR>
 "" AsyncRun
 let g:asyncrun_open = 8
 nnoremap <leader>r :AsyncRun
-
+" Allow vim fugitive commands to be wrapped w/ AsyncRun
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
 "" Airline
 let g:bufferline_echo = 0
