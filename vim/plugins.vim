@@ -9,22 +9,23 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-sensible'                            " basic defaults
-Plug 'tpope/vim-unimpaired'                          " variety of useful bracket maps
-Plug 'tpope/vim-commentary'                          " (un)comment code blocks
-Plug 'tpope/vim-surround'                            " edit surrounding tags easily
-Plug 'tpope/vim-repeat'                              " repeat commands, not just motions
-Plug 'tpope/vim-eunuch'                              " sugar for UNIX shell commands
-Plug 'tpope/vim-vinegar'                             " extend netrw file tree
-Plug 'easymotion/vim-easymotion'                     " move around the buffer even faster
-Plug 'mbbill/undotree'                               " visualize undo history
-Plug 'yuttie/comfortable-motion.vim'                 " smooth scrolling
-Plug 'AndrewRadev/splitjoin.vim'                     " split/join single/multiline blocks/functions
-Plug 'junegunn/goyo.vim'                             " distraction-free editing (for prose/documentation)
-Plug 'skywind3000/asyncrun.vim'                      " run shell commands asynchronously
-Plug 'neoclide/coc.nvim', {'branch': 'release'}      " autocomplete/intellisense
-Plug 'j5shi/CommandlineComplete.vim'                 " autocomplete for command mode
-Plug 'jhwheeler/fluidlan-vim'                        " custom color scheme
+Plug 'tpope/vim-sensible'                         " basic defaults
+Plug 'tpope/vim-unimpaired'                       " variety of useful bracket maps
+Plug 'tpope/vim-commentary'                       " (un)comment code blocks
+Plug 'tpope/vim-surround'                         " edit surrounding tags easily
+Plug 'tpope/vim-repeat'                           " repeat commands, not just motions
+Plug 'tpope/vim-eunuch'                           " sugar for UNIX shell commands
+Plug 'tpope/vim-vinegar'                          " extend netrw file tree
+Plug 'easymotion/vim-easymotion'                  " move around the buffer even faster
+Plug 'mbbill/undotree'                            " visualize undo history
+Plug 'yuttie/comfortable-motion.vim'              " smooth scrolling
+Plug 'AndrewRadev/splitjoin.vim'                  " split/join single/multiline blocks/functions
+Plug 'junegunn/goyo.vim'                          " distraction-free editing (for prose/documentation)
+Plug 'skywind3000/asyncrun.vim'                   " run shell commands asynchronously
+Plug 'neoclide/coc.nvim', {'branch': 'release'}   " autocomplete/intellisense
+Plug 'j5shi/CommandlineComplete.vim'              " autocomplete for command mode
+Plug 'godlygeek/tabular'                          " autocomplete for command mode
+Plug 'jhwheeler/fluidlan-vim'                     " custom color scheme
 
 " Status line
 Plug 'vim-airline/vim-airline'
