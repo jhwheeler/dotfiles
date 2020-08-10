@@ -13,6 +13,7 @@ Plug 'tpope/vim-sensible'                         " basic defaults
 Plug 'tpope/vim-unimpaired'                       " variety of useful bracket maps
 Plug 'tpope/vim-commentary'                       " (un)comment code blocks
 Plug 'tpope/vim-surround'                         " edit surrounding tags easily
+Plug 'wellle/targets.vim'                         " target more text objects
 Plug 'tpope/vim-repeat'                           " repeat commands, not just motions
 Plug 'tpope/vim-eunuch'                           " sugar for UNIX shell commands
 Plug 'tpope/vim-vinegar'                          " extend netrw file tree
