@@ -9,24 +9,25 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-sensible'                         " basic defaults
-Plug 'tpope/vim-unimpaired'                       " variety of useful bracket maps
-Plug 'tpope/vim-commentary'                       " (un)comment code blocks
-Plug 'tpope/vim-surround'                         " edit surrounding tags easily
-Plug 'wellle/targets.vim'                         " target more text objects
-Plug 'tpope/vim-repeat'                           " repeat commands, not just motions
-Plug 'tpope/vim-eunuch'                           " sugar for UNIX shell commands
-Plug 'tpope/vim-vinegar'                          " extend netrw file tree
-Plug 'easymotion/vim-easymotion'                  " move around the buffer even faster
-Plug 'mbbill/undotree'                            " visualize undo history
-Plug 'yuttie/comfortable-motion.vim'              " smooth scrolling
-Plug 'AndrewRadev/splitjoin.vim'                  " split/join single/multiline blocks/functions
-Plug 'junegunn/goyo.vim'                          " distraction-free editing (for prose/documentation)
-Plug 'skywind3000/asyncrun.vim'                   " run shell commands asynchronously
-Plug 'neoclide/coc.nvim', {'branch': 'release'}   " autocomplete/intellisense
-Plug 'j5shi/CommandlineComplete.vim'              " autocomplete for command mode
-Plug 'godlygeek/tabular'                          " autocomplete for command mode
-Plug 'jhwheeler/fluidlan-vim'                     " custom color scheme
+Plug 'tpope/vim-sensible'                                            " basic defaults
+Plug 'tpope/vim-unimpaired'                                          " variety of useful bracket maps
+Plug 'tpope/vim-commentary'                                          " (un)comment code blocks
+Plug 'tpope/vim-surround'                                            " edit surrounding tags easily
+Plug 'wellle/targets.vim'                                            " target more text objects
+Plug 'tpope/vim-repeat'                                              " repeat commands, not just motions
+Plug 'tpope/vim-eunuch'                                              " sugar for UNIX shell commands
+Plug 'tpope/vim-vinegar'                                             " extend netrw file tree
+Plug 'easymotion/vim-easymotion'                                     " move around the buffer even faster
+Plug 'mbbill/undotree'                                               " visualize undo history
+Plug 'yuttie/comfortable-motion.vim'                                 " smooth scrolling
+Plug 'AndrewRadev/splitjoin.vim'                                     " split/join single/multiline blocks/functions
+Plug 'junegunn/goyo.vim'                                             " distraction-free editing (for prose/documentation)
+Plug 'skywind3000/asyncrun.vim'                                      " run shell commands asynchronously
+Plug 'neoclide/coc.nvim', {'branch': 'release'}                      " autocomplete/intellisense
+Plug 'j5shi/CommandlineComplete.vim'                                 " autocomplete for command mode
+Plug 'godlygeek/tabular'                                             " autocomplete for command mode
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " key-binding guide
+Plug 'jhwheeler/fluidlan-vim'                                        " custom color scheme
 
 " Status line
 Plug 'vim-airline/vim-airline'
@@ -57,7 +58,6 @@ Plug 'alx741/vim-rustfmt'
 Plug 'mattn/emmet-vim'
 
 call plug#end()
-
 
 
 "" Plugin Settings
@@ -91,9 +91,14 @@ endif
 "" Fugitive
 set diffopt+=vertical " vertical diffs
 nnoremap <leader>gs :vertical Gstatus <bar> :vertical resize 50<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gpl :Gpull<CR>
+nmap <leader>gps :Gpush<CR>
+nmap <leader>ga% :G add %<CR>
+nmap <leader>gaa :G add .<CR>
+nmap <leader>gt :G stash<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
-nmap <leader>gc :Gcommit<CR>
 
 
 "" Emmet
@@ -115,6 +120,7 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css',
   \ 'coc-tsserver',
+  \ 'coc-explorer',
   \  ]
 
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -140,22 +146,10 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()"
-
-" GoTo code navigation.
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gy <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>rr <Plug>(coc-rename)
-nmap <leader>g[ <Plug>(coc-diagnostic-prev)
-nmap <leader>g] <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
-nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+" Restart CoC to refresh new settings/extensions
 nnoremap <leader>cr :CocRestart
 
-" Use K to show documentation in preview window.
+" Show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -166,13 +160,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 " Python path
 let g:python3_host_prog = $GLOBALINSTALLDIR . "/usr/bin/python3"
 
@@ -180,9 +167,30 @@ let g:python3_host_prog = $GLOBALINSTALLDIR . "/usr/bin/python3"
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 
+" Explorer
+nmap <leader>e :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif"
+
 
 "" FZF
-nnoremap <leader>; :FZF <CR>
+
+let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 function! FloatingFZF()
   let width = float2nr(&columns * 0.9)
@@ -198,6 +206,10 @@ endfunction
 
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
+" Search filenames
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--inline-info']}), <bang>0)
+
 " Search in files
 " --column: Show column number
 " --line-number: Show line number
@@ -209,8 +221,12 @@ let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --glob "!.git/*" --glob "!node_modules/*" --glob "!*/node_modules/*" --glob "!.jest/*" --glob "!.expo/*" --glob "!__sapper__/*" --glob "!*/__sapper__/*" --glob "!*/bundle/*" --glob "!public/bundle/build.js" '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-nnoremap <leader>f :Find<CR>
+command! -bang -nargs=* FindInFiles
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --smart-case --no-heading --color=always --glob "!.git/*" --glob "!node_modules/*" --glob "!*/node_modules/*" --glob "!.jest/*" --glob "!.expo/*" --glob "!__sapper__/*" --glob "!*/__sapper__/*" --glob "!*/bundle/*" --glob "!public/bundle/build.js" '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4.. -e'}, 'right:50%', '?'),
+  \   <bang>0)
 
 " Allows you to put selected items in the quickfix list
 function! s:build_quickfix_list(lines)
@@ -241,6 +257,30 @@ endfunction
 
 nnoremap <leader>oqf<CR> :call QuickFixOpenAll()<CR>
 
+" Maps (s is for search)
+nnoremap <leader>s/ :History/<CR>
+nnoremap <leader>s: :History:<CR>
+nnoremap <leader>s; :Commands<CR>
+nnoremap <leader>sa :Ag<CR>
+nnoremap <leader>sb :BLines<CR>
+nnoremap <leader>sB :Buffers<CR>
+nnoremap <leader>sc :Commits<CR>
+nnoremap <leader>sC :BCommits<CR>
+nnoremap <leader>sf :Files<CR>
+nnoremap <leader>sg :GFiles?<CR>
+nnoremap <leader>sh :Helptags<CR>
+nnoremap <leader>sH :History<CR>
+nnoremap <leader>si :FindInFiles<CR>
+nnoremap <leader>sl :Lines<CR>
+nnoremap <leader>sm :Marks<CR>
+nnoremap <leader>sM :Maps<CR>
+nnoremap <leader>ss :Snippets<CR>
+nnoremap <leader>sS :Colors<CR>
+nnoremap <leader>st :Tags<CR>
+nnoremap <leader>st :BTags<CR>
+nnoremap <leader>sy :Filetypes<CR>
+
+
 
 "" AsyncRun
 let g:asyncrun_open = 8
@@ -256,6 +296,91 @@ autocmd VimEnter *
 let g:airline_theme='violet'
 " For GitGutter integration
 let g:airline#extensions#hunks#non_zero_only = 1
+
+
+"" WhichKey
+
+" Show on leader
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+" Only wait half a second before showing window
+set timeoutlen=500
+
+" Show keys in small floating window
+let g:which_key_use_floating_win = 1
+
+" Register Which Key map
+" call which_key#register('<Space>', "g:which_key_map")
+autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
+
+" Define prefix dictionary
+let g:which_key_map =  {}
+" Define a separator
+" let g:which_key_sep = '→'
+
+" Single Mappings
+let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
+let g:which_key_map['r'] = [ ':AsyncRun'                  , 'async run' ]
+
+" b is for buffer
+let g:which_key_map.b = {
+      \ 'name': '+buffer',
+      \ 'd':   [':bd'                      , 'delete buffer'],
+      \ 'da':  'close all buffers except the current one',
+      \ }
+
+" v is for vim
+let g:which_key_map.v = {
+      \ 'name': '+vim',
+      \ 'e': [':e ~/.vimrc'              , 'edit vimrc'],
+      \ 'v': [':vsp ~/.vimrc'            , 'edit vimrc (vertical split)'],
+      \ 's': [':source ~/.vimrc'         , 'source vimrc'],
+      \ 'p': [':vsp ~/.vim/plugins.vim'  , 'edit plugins config'],
+      \ 'm': [':vsp ~/.vim/maps.vim'     , 'edit mapping config'],
+      \ }
+
+" g is for git
+let g:which_key_map.g = {
+      \ 'name': '+git',
+      \ 's':   [':Gstatus'                 , 'git status'],
+      \ 'c':   [':Gcommit'                 , 'git commit'],
+      \ 't':   [':G stash'                 , 'git stash'],
+      \ 'pl':  [':Gpull'                   , 'git pull'],
+      \ 'ps':  [':Gpush'                   , 'git push'],
+      \ 'a%':  [':G add %'                 , 'git add %'],
+      \ 'a.':  [':G add .'                 , 'git add .'],
+      \ }
+
+" s is for search
+let g:which_key_map.s = {
+      \ 'name': '+search',
+      \ '/': [':History/'     , 'history'],
+      \ ':': [':History:'     , 'command history'],
+      \ ';': [':Commands'     , 'commands'],
+      \ 'b': [':BLines'       , 'current buffer'],
+      \ 'B': [':Buffers'      , 'open buffers'],
+      \ 'c': [':Commits'      , 'commits'],
+      \ 'C': [':BCommits'     , 'buffer commits'],
+      \ 'f': [':Files'        , 'files'],
+      \ 'g': [':GFiles?'      , 'modified git files'],
+      \ 'h': [':Helptags'     , 'help tags'] ,
+      \ 'H': [':History'      , 'file history'],
+      \ 'i': [':FindInFiles'  , 'find in files'],
+      \ 'l': [':Lines'        , 'lines'] ,
+      \ 'm': [':Marks'        , 'marks'] ,
+      \ 'M': [':Maps'         , 'normal maps'] ,
+      \ 's': [':Snippets'     , 'snippets'],
+      \ 'S': [':Colors'       , 'color schemes'],
+      \ 't': [':Tags'         , 'project tags'],
+      \ 'T': [':BTags'        , 'buffer tags'],
+      \ 'y': [':Filetypes'    , 'file types'],
+      \ }
+
+" t is for tools
+let g:which_key_map.t = {
+      \ 'name': '+tools',
+      \ 's': [':%s/'          , 'prefill substitute'],
+      \ }
 
 
 "" Session
