@@ -39,6 +39,7 @@ Plug 'airblade/vim-gitgutter'
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
 
 " Session management
 Plug 'xolox/vim-misc'
