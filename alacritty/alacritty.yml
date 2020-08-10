@@ -220,7 +220,7 @@ live_config_reload: true
 # Shell
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
 shell:
- program: /usr/local/bin/bash
+ program: /bin/zsh
  args:
    - --login
 
@@ -231,7 +231,7 @@ shell:
 working_directory: None
 
 # Send ESC (\x1b) before characters when alt is pressed.
-alt_send_esc: true
+# alt_send_esc: true
 
 debug:
   # Display the time it takes to redraw each frame.
