@@ -73,7 +73,10 @@ let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 
 "" EasyMotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
+map <leader><leader>f <Plug>(easymotion-overwin-f)
+map <leader><leader>j <Plug>(easymotion-overwin-line)
+map <leader><leader>k <Plug>(easymotion-overwin-line)
+map <leader><leader>w <Plug>(easymotion-overwin-w)
 
 "Jump to anywhere you want with minimal keystrokes, with just one key
 "binding.
