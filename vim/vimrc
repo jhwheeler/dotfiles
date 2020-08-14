@@ -19,6 +19,8 @@ set colorcolumn=0             " don't highlight columns
 set noshowmode                " hide mode (airline shows it already)
 set synmaxcol=0               " don't limit syntax highlighting
 set mouse=a                   " allow the mouse
+set autoread                  " Autoread when file is changed from outside of vim
+set foldmethod=marker         " Default foldmethod
 
 " See both current line number and relative numbers above/below
 set number
