@@ -36,6 +36,7 @@ Plug 'bling/vim-bufferline'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/git-messenger.vim'
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -406,6 +407,7 @@ let g:rustfmt_backup = 0
 "" Goyo
 let g:goyo_height='100%'
 let g:goyo_width=85
+
 
 "" GitGutter
 nmap ]h <Plug>(GitGutterNextHunk)
