@@ -2,9 +2,6 @@
 
 let mapleader = " "
 
-" Show undo tree
-nnoremap <silent> <leader>u :UndotreeShow<CR>
-
 " Resize
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>

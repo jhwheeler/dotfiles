@@ -90,6 +90,9 @@ if executable('rg')
   let g:rg_derive_root='true'
 endif
 
+"" Undotree
+nnoremap <silent> <leader>u :UndotreeShow<CR>
+
 
 "" Fugitive
 set diffopt+=vertical " vertical diffs
