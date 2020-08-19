@@ -27,10 +27,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}                      " autocompl
 Plug 'j5shi/CommandlineComplete.vim'                                 " autocomplete for command mode
 Plug 'godlygeek/tabular'                                             " autocomplete for command mode
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " key-binding guide
-Plug 'jhwheeler/fluidlan-vim'                                        " custom color scheme
+Plug 'mhinz/vim-startify'
 
 " Status line
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'bling/vim-bufferline'
 
 " Git
@@ -103,6 +104,7 @@ nmap <leader>gpl :Gpull<CR>
 nmap <leader>gps :Gpush<CR>
 nmap <leader>ga% :G add %<CR>
 nmap <leader>gaa :G add .<CR>
+nmap <leader>gd :Gdiff<CR>
 nmap <leader>gt :G stash<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
@@ -412,3 +414,69 @@ let g:goyo_width=85
 "" GitGutter
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
+
+
+"" Startify
+
+" Save sessions
+let g:startify_session_dir = '~/.vim/session'
+
+" Like vim rooter
+let g:startify_change_to_vcs_root = 1
+
+" Automatically save sessions
+let g:startify_session_persistence = 1
+
+" Get rid of empty buffer on quit
+let g:startify_enable_special = 0
+
+" Skip these files in the start menu
+let g:startify_skiplist = [
+      \ 'COMMIT_EDITMSG',
+      \ '.git',
+      \ '^/tmp',
+      \ ]
+
+" Returns all modified files of the current git repo
+" `2>/dev/null` makes the command fail quietly, so that when we are not
+" in a git repo, the list will be empty
+function! s:gitModified()
+    let files = systemlist('git ls-files -m 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+" same as above, but show untracked files, honouring .gitignore
+function! s:gitUntracked()
+    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+let g:startify_lists = [
+      \ { 'type': 'files',     'header': ['   Recent']            },
+      \ { 'type': 'dir',       'header': ['   Current'. getcwd()] },
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ { 'type': function('s:gitModified'),  'header': ['   Git modified']},
+      \ { 'type': function('s:gitUntracked'), 'header': ['   Git untracked']},
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ ]
+
+
+let g:startify_commands = [
+      \ ['Vim Reference', 'h ref'],
+      \ ]
+
+let g:startify_bookmarks = [
+      \ '~/Projects/Playpilot/web',
+      \ '~/Projects/',
+      \ '~/Projects/dotfiles',
+      \ ]
+
+let g:startify_custom_header = [
+      \ '   __ _       _     _ _             ',
+      \ '  / _| |     (_)   | | |            ',
+      \ ' | |_| |_   _ _  __| | | __ _ _ __  ',
+      \ ' |  _| | | | | |/ _` | |/ _` | `_ \ ',
+      \ ' | | | | |_| | | (_| | | (_| | | | |',
+      \ ' |_| |_|\__,_|_|\__,_|_|\__,_|_| |_|',
+      \]
