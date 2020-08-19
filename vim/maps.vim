@@ -27,3 +27,10 @@ nnoremap <leader>x :x<CR>
 
 " Close all buffers except the current one
 nnoremap <leader>bda :<c-u>up <bar> %bd <bar> e#<cr>
+
+" Fix visual block indenting
+vmap < <gv
+vmap > >gv
+
+" Make Y work like other maps
+nmap Y y$

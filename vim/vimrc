@@ -71,10 +71,6 @@ set updatetime=50
 highlight clear SignColumn
 
 "" Colors
-
-"" local version for testing (located in ~/.vim/colors)
-" colorscheme fluidlan-vim
-"" version from the plugin hosted on Github
 colorscheme fluidlan
 
 set termguicolors
