@@ -21,6 +21,8 @@
     ~/.vim/plugin: vim/plugin
     ~/.vim/maps.vim: vim/maps.vim
     ~/.vim/plugins.vim: vim/plugins.vim
+    ~/.vim/filetype.vim: vim/filetype.vim
+    ~/.vim/ftplugin: vim/ftplugin
     ~/.vim/doc: vim/doc
     ~/.vim/spell: vim/spell
 
