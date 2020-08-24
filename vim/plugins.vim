@@ -28,6 +28,7 @@ Plug 'j5shi/CommandlineComplete.vim'                                 " autocompl
 Plug 'godlygeek/tabular'                                             " autocomplete for command mode
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " key-binding guide
 Plug 'mhinz/vim-startify'
+Plug 'stsewd/fzf-checkout.vim'
 
 " Status line
 Plug 'vim-airline/vim-airline'
@@ -265,6 +266,10 @@ function! QuickFixOpenAll()
 endfunction
 
 nnoremap <leader>oqf<CR> :call QuickFixOpenAll()<CR>
+ 
+nnoremap <silent> <leader>go :GCheckout<CR>
+let g:fzf_checkout_track_key = 'ctrl-t'
+let g:fzf_checkout_git_options = '--sort=-committerdate'
 
 " Maps (s is for search)
 nnoremap <leader>s/ :History/<CR>
