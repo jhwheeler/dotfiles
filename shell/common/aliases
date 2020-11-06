@@ -49,6 +49,7 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 
 # Watson Time Tracker
 alias t='watson'
+alias tst='watson status'
 alias tp='watson start playpilot'
 
 # Quick search w/ Lynx
