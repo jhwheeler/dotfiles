@@ -109,6 +109,7 @@ nmap <leader>gd :Gdiff<CR>
 nmap <leader>gt :G stash<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
+nmap <leader>ggd :Gdiff master<CR>
 
 
 "" Emmet
@@ -266,7 +267,7 @@ function! QuickFixOpenAll()
 endfunction
 
 nnoremap <leader>oqf<CR> :call QuickFixOpenAll()<CR>
- 
+
 nnoremap <silent> <leader>go :GCheckout<CR>
 let g:fzf_checkout_track_key = 'ctrl-t'
 let g:fzf_checkout_git_options = '--sort=-committerdate'
@@ -458,11 +459,11 @@ endfunction
 
 let g:startify_lists = [
       \ { 'type': 'files',     'header': ['   Recent']            },
-      \ { 'type': 'dir',       'header': ['   Current'. getcwd()] },
-      \ { 'type': 'sessions',  'header': ['   Sessions']       },
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
       \ { 'type': function('s:gitModified'),  'header': ['   Git modified']},
       \ { 'type': function('s:gitUntracked'), 'header': ['   Git untracked']},
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'dir',       'header': ['   Current'. getcwd()] },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
       \ { 'type': 'commands',  'header': ['   Commands']       },
       \ ]
 
