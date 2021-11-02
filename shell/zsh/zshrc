@@ -18,11 +18,9 @@ plugins=(
   git
   node
   cp
-  tar
   python
   npm
   man
-  fast-syntax-highlighting
   z
   zsh-autosuggestions
 )
@@ -35,6 +33,7 @@ source ~/.shell/env
 # Source aliases
 source $HOME/.bash_aliases
 
+export TERM=xterm
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -91,3 +90,16 @@ precmd_functions+=(_fix_cursor)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/slss.zsh
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh

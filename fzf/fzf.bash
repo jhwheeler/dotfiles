@@ -7,7 +7,3 @@ fi
 # Auto-completion
 # ---------------
 [[ $- == *i* ]] && source "/Users/alacritas/.fzf/shell/completion.bash" 2> /dev/null
-
-# Key bindings
-# ------------
-source "/Users/alacritas/.fzf/shell/key-bindings.bash"

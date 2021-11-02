@@ -73,6 +73,7 @@ highlight clear SignColumn
 " Wrap text in diffs
 au VimEnter * if &diff | execute 'windo set wrap' | endif
 
+
 "" Colors
 colorscheme fluidlan
 

@@ -28,7 +28,9 @@ Plug 'j5shi/CommandlineComplete.vim'                                 " autocompl
 Plug 'godlygeek/tabular'                                             " autocomplete for command mode
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " key-binding guide
 Plug 'mhinz/vim-startify'
-Plug 'stsewd/fzf-checkout.vim'
+
+" Colors
+Plug 'jhwheeler/fluidlan-vim'
 
 " Status line
 Plug 'vim-airline/vim-airline'
@@ -55,10 +57,12 @@ Plug 'christoomey/vim-tmux-navigator'
 " Language plugins
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go'
-Plug 'evanleck/vim-svelte'
+" Plug 'evanleck/vim-svelte'
+Plug 'leafOfTree/vim-svelte-plugin'
 Plug 'leafgarland/typescript-vim'
 Plug 'alx741/vim-rustfmt'
 Plug 'mattn/emmet-vim'
+Plug 'isRuslan/vim-es6'
 
 call plug#end()
 
@@ -98,7 +102,7 @@ nnoremap <silent> <leader>u :UndotreeShow<CR>
 
 
 "" Fugitive
-set diffopt+=vertical " vertical diffs
+" set diffopt+=vertical " vertical diffs
 nnoremap <leader>gs :vertical Gstatus <bar> :vertical resize 50<CR>
 nmap <leader>gc :Gcommit<CR>
 nmap <leader>gpl :Gpull<CR>
@@ -203,19 +207,7 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-function! FloatingFZF()
-  let width = float2nr(&columns * 0.9)
-  let height = float2nr(&lines * 0.8)
-  let opts = { 'relative': 'editor',
-             \ 'row': (&lines - height) / 2,
-             \ 'col': (&columns - width) / 2,
-             \ 'width': width,
-             \ 'height': height }
-
-  call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-endfunction
-
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.95, 'highlight': 'Comment' } }
 
 " Search filenames
 command! -bang -nargs=? -complete=dir Files
@@ -269,7 +261,7 @@ endfunction
 nnoremap <leader>oqf<CR> :call QuickFixOpenAll()<CR>
 
 nnoremap <silent> <leader>go :GCheckout<CR>
-let g:fzf_checkout_track_key = 'ctrl-t'
+" let g:fzf_checkout_track_key = 'ctrl-t'
 let g:fzf_checkout_git_options = '--sort=-committerdate'
 
 " Maps (s is for search)

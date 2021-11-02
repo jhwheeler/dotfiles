@@ -31,9 +31,9 @@ alias :q='exit'
 
 # Config
 export DOTFILES="~/Projects/dotfiles"
-alias vim='nvim'
-alias vimrc="nvim $DOTFILES/vim/vimrc"
-alias bashrc='nvim $DOTFILES/shell/bash/bashrc'
+# alias vim='vim'
+alias vimrc="vim $DOTFILES/vim/vimrc"
+alias bashrc='vim $DOTFILES/shell/bash/bashrc'
 alias bashpr='nvim $DOTFILES/shell/bash/bash_profile'
 alias zshrc='nvim $DOTFILES/shell/zsh/zshrc'
 alias srcz='source ~/.zshrc'
