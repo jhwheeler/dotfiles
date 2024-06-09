@@ -465,7 +465,6 @@ let g:startify_commands = [
       \ ]
 
 let g:startify_bookmarks = [
-      \ '~/Projects/Playpilot/web',
       \ '~/Projects/',
       \ '~/Projects/dotfiles',
       \ ]

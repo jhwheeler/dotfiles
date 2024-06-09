@@ -52,10 +52,6 @@ if 1
   nohlsearch
 endif
 
-" Add /src to path, for file jumping in the Playpilot repo
-" Due to aliases in the rollup config
-set path+=src/
-
 " Don't show startup splash screen
 set shortmess+=I
 " Don't pass messages to |ins-completion-menu|.

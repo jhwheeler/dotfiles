@@ -31,7 +31,7 @@ alias :q='exit'
 
 # Config
 export DOTFILES="~/Projects/dotfiles"
-# alias vim='vim'
+
 alias vimrc="vim $DOTFILES/vim/vimrc"
 alias bashrc='vim $DOTFILES/shell/bash/bashrc'
 alias bashpr='nvim $DOTFILES/shell/bash/bash_profile'
@@ -53,7 +53,7 @@ alias fg='if [[ $(jobs) ]]; then fg; else nvim; fi'
 # Watson Time Tracker
 alias t='watson'
 alias tst='watson status'
-alias tp='watson start playpilot'
+alias tp='watson start pa'
 
 # Quick search w/ Lynx
 alias s='lynx_search'
@@ -67,13 +67,10 @@ alias cat='bat'
 # vifm
 alias v='vifm'
 
-# Playpilot
-alias n='npm run'
-alias nd='npm run dev'
-alias ndprod='npm run dev --prod'
-alias ns='npm run start'
-alias yd='yarn dev'
-alias ys='yarn start'
+# NPM
+alias n='pnpm run'
+alias nd='pnpm run dev'
+alias ns='pnpm run start'
 
 # Suppress message telling you to use zsh instead of bash
 export BASH_SILENCE_DEPRECATION_WARNING=1
