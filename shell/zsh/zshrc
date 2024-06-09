@@ -7,7 +7,7 @@ fi
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/alacritas/.oh-my-zsh
+export ZSH=/Users/jackson/.oh-my-zsh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_AUTO_TITLE="true"
@@ -91,15 +91,10 @@ precmd_functions+=(_fix_cursor)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/alacritas/Projects/Playpilot/microservices/node_modules/tabtab/.completions/slss.zsh
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /usr/local/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
+# pnpm
+export PNPM_HOME="/Users/jackson/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

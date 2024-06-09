@@ -2,15 +2,15 @@
 
 # Marks:
 'H
-	/Users/alacritas/
+	/Users/jackson/
 	..
 1595521010
 'b
-	/Users/alacritas/bin/
+	/Users/jackson/bin/
 	..
 1595521010
 'h
-	/Users/alacritas/
+	/Users/jackson/
 	..
 1595521010
 
@@ -26,106 +26,106 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/Users/alacritas
+d/Users/jackson
 	Music
 11
-d/Users/alacritas/Music
+d/Users/jackson/Music
 	BULGARA
 3
-d/Users/alacritas/Music/BULGARA
+d/Users/jackson/Music/BULGARA
 	..
 0
-d/Users/alacritas/Music
+d/Users/jackson/Music
 	iTunes
 24
-d/Users/alacritas/Music/iTunes
+d/Users/jackson/Music/iTunes
 	Previous iTunes Libraries
 2
-d/Users/alacritas/Music/iTunes/Previous iTunes Libraries
+d/Users/jackson/Music/iTunes/Previous iTunes Libraries
 	..
 0
-d/Users/alacritas/Music/iTunes
+d/Users/jackson/Music/iTunes
 	..
 0
-d/Users/alacritas/Music
+d/Users/jackson/Music
 	..
 0
-d/Users/alacritas
+d/Users/jackson
 	nltk_data
 19
-d/Users/alacritas/nltk_data
+d/Users/jackson/nltk_data
 	corpora
 1
-d/Users/alacritas/nltk_data/corpora
+d/Users/jackson/nltk_data/corpora
 	..
 0
-d/Users/alacritas/nltk_data
+d/Users/jackson/nltk_data
 	..
 0
-d/Users/alacritas
+d/Users/jackson
 	Boostnote
 4
-d/Users/alacritas/Boostnote
+d/Users/jackson/Boostnote
 	notes
 1
-d/Users/alacritas/Boostnote/notes
+d/Users/jackson/Boostnote/notes
 	0f7d6db2-c6aa-48c5-b01c-70843cdbe2b9.cson
 1
-d/Users/alacritas/Boostnote
+d/Users/jackson/Boostnote
 	notes
 1
-d/Users/alacritas
+d/Users/jackson
 	Boostnote
 4
 d/Users
-	alacritas
+	jackson
 3
 d/
 	Users
 3
 d/Users
-	alacritas
+	jackson
 3
-d/Users/alacritas
+d/Users/jackson
 	Applications
 3
-d/Users/alacritas/Applications
+d/Users/jackson/Applications
 	..
 0
-d/Users/alacritas
+d/Users/jackson
 	Applications
 3
-d/Users/alacritas/Applications
+d/Users/jackson/Applications
 	..
 0
-d/Users/alacritas
+d/Users/jackson
 	Applications
 3
-d/Users/alacritas/Applications
+d/Users/jackson/Applications
 	Brave Browser Apps.localized
 1
-d/Users/alacritas/Applications/Brave Browser Apps.localized
+d/Users/jackson/Applications/Brave Browser Apps.localized
 	..
 0
-d/Users/alacritas/Applications
+d/Users/jackson/Applications
 	Brave Browser Apps.localized
 1
-d/Users/alacritas
+d/Users/jackson
 	AndroidStudioProjects
 2
 d/Users
-	alacritas
+	jackson
 3
-d/Users/alacritas
+d/Users/jackson
 	.vifm
 42
-d/Users/alacritas/.vifm
+d/Users/jackson/.vifm
 	.vifmrc
 1
 d
 
 # Right window history (oldest to newest):
-D/Users/alacritas
+D/Users/jackson
 	..
 0
 D/etc
@@ -140,7 +140,7 @@ D/etc
 D/
 	cores
 6
-D/Users/alacritas
+D/Users/jackson
 	fluidlan.vim
 25
 D
@@ -165,17 +165,17 @@ D
 # Local filter history (oldest to newest):
 
 # Registers:
-""/Users/alacritas/.local/share/vifm/Trash/000_localhost.key
+""/Users/jackson/.local/share/vifm/Trash/000_localhost.key
 
 # Directory stack (oldest to newest):
 
 # Trash content:
-t/Users/alacritas/.local/share/vifm/Trash/000_download
-	/Users/alacritas/download
-t/Users/alacritas/.local/share/vifm/Trash/000_localhost.crt
-	/Users/alacritas/localhost.crt
-t/Users/alacritas/.local/share/vifm/Trash/000_localhost.key
-	/Users/alacritas/localhost.key
+t/Users/jackson/.local/share/vifm/Trash/000_download
+	/Users/jackson/download
+t/Users/jackson/.local/share/vifm/Trash/000_localhost.crt
+	/Users/jackson/localhost.crt
+t/Users/jackson/.local/share/vifm/Trash/000_localhost.key
+	/Users/jackson/localhost.key
 
 # State:
 f

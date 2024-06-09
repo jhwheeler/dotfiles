@@ -11,7 +11,7 @@ else
 fi
 
 # SCM Breeze
-[ -s "/Users/alacritas/.scm_breeze/scm_breeze.sh" ] && source "/Users/alacritas/.scm_breeze/scm_breeze.sh"
+[ -s "/Users/jackson/.scm_breeze/scm_breeze.sh" ] && source "/Users/jackson/.scm_breeze/scm_breeze.sh"
 
 # Vim
 export PATH=$PATH:~/.vimpkg/bin
@@ -28,11 +28,11 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 # Android
-export ANDROID_SDK=/Users/alacritas/Library/Android/sdk
-export PATH=$PATH:/Users/alacritas/platform-tools
+export ANDROID_SDK=/Users/jackson/Library/Android/sdk
+export PATH=$PATH:/Users/jackson/platform-tools
 
 # Deno
-export DENO_INSTALL="/Users/alacritas/.deno"
+export DENO_INSTALL="/Users/jackson/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 # This removes repeated commands in terminal history

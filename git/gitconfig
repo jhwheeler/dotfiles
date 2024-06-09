@@ -11,7 +11,8 @@
 [pull]
   rebase = false
 [core]
-  excludesfile = /Users/alacritas/.gitignore_global
+  excludesfile = /Users/jackson/.gitignore_global
+	editor = nvim
 ; [url "git@github.com:"]
 ; 	insteadOf = https://github.com/
 [alias]
