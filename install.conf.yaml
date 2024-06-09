@@ -43,15 +43,6 @@
     ~/.fzf.bash: fzf/fzf.bash
     ~/.fzf.zsh: fzf/fzf.zsh
 
-    # Text browser
-    ~/.config/lynx: lynx
-
-    # File manager
-    ~/.config/vifm: vifm
-
-    # Keyboard remapper (MacOS only)
-    ~/.config/karabiner: karabiner
-
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [mkdir -p ~/.config, Creating config directory]
