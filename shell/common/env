@@ -1,3 +1,9 @@
+# OS detection
+case "$(uname -s)" in
+  Linux*)  export DOTFILES_OS="linux";;
+  Darwin*) export DOTFILES_OS="macos";;
+esac
+
 # Use tmux if available
 if [ -z "$TMUX" ]; then
   tmux attach -t default || tmux new -s default
@@ -11,29 +17,24 @@ else
 fi
 
 # SCM Breeze
-[ -s "/Users/jackson/.scm_breeze/scm_breeze.sh" ] && source "/Users/jackson/.scm_breeze/scm_breeze.sh"
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 # Vim
 export PATH=$PATH:~/.vimpkg/bin
 
 # Scripts
-export PATH=$PATH:~/scripts
-
-# Lynx web browser
-export LYNX_LSS=$HOME/.config/lynx/lynx.lss
-export LYNX_CFG=$HOME/.config/lynx/lynx.cfg
+export PATH=$PATH:~/projects/scripts
 
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
-# Android
-export ANDROID_SDK=/Users/jackson/Library/Android/sdk
-export PATH=$PATH:/Users/jackson/platform-tools
-
 # Deno
-export DENO_INSTALL="/Users/jackson/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
+# Cargo/Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # This removes repeated commands in terminal history
 export HISTCONTROL=ignoreboth:erasedups
@@ -48,7 +49,6 @@ export REVIEW_BASE=master
 # bat syntax highlighting
 export BAT_THEME="Dracula"
 
-
 # FZF Config
 export FZF_DEFAULT_COMMAND='rg --files --hidden  --no-ignore-vcs -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*,*/bundle/*}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -59,3 +59,33 @@ export FZF_DEFAULT_OPTS='
 --preview "cat {}"
 --bind ctrl-a:select-all
 '
+
+# Platform-specific config
+if [ "$DOTFILES_OS" = "macos" ]; then
+  # Android SDK (macOS)
+  export ANDROID_SDK="$HOME/Library/Android/sdk"
+  export PATH=$PATH:$ANDROID_SDK/platform-tools
+
+  # pnpm (macOS installs to ~/Library)
+  export PNPM_HOME="$HOME/Library/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+
+  # Suppress message telling you to use zsh instead of bash
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
+
+if [ "$DOTFILES_OS" = "linux" ]; then
+  # pnpm (Linux)
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+
+  # Solve issue w/ fetch failing b/c of a too short timeout
+  # see https://github.com/nodejs/undici/issues/2990
+  export NODE_OPTIONS="--network-family-autoselection-attempt-timeout=500"
+fi

@@ -7,9 +7,6 @@
 - link:
     ~/.dotfiles: ''
 
-    # Package manager
-    ~/Brewfile: brew/Brewfile
-
     # Terminal
     ~/.config/alacritty: alacritty
 
@@ -39,6 +36,10 @@
     ~/.gitignore_global: git/gitignore_global
     ~/.git_template: git/git_template
 
+    # Claude Code
+    ~/.claude/settings.json: claude/settings.json
+    ~/.claude/hooks/notify.sh: claude/hooks/notify.sh
+
     # Fuzzy finder
     ~/.fzf.bash: fzf/fzf.bash
     ~/.fzf.zsh: fzf/fzf.zsh
@@ -47,5 +48,6 @@
   - [git submodule update --init --recursive, Installing submodules]
   - [mkdir -p ~/.config, Creating config directory]
   - [mkdir -p ~/.shell, Creating shell config directory]
+  - [mkdir -p ~/.claude/hooks, Creating Claude Code config directory]
     # If you haven't already, run prefix-I with tmux open after doing this to reload tmux and install the plugins
   - [ if test -d "~/.tmux/plugins/tpm"; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi ]

@@ -3,9 +3,9 @@
 # Always copy recursively & explain what was done
 alias cp='cp -rv'
 # List contents with colors for file types, (A)lmost all hidden files (without . and ..), in (C)olumns, with class indicators (F)
-alias ls='ls -ACFG'
+alias ls='ls -ACF'
 # List contents with colors for file types, (a)ll hidden entries (including . and ..), use (l)ong listing format, with class indicators (F)
-alias ll='ls -alFG'
+alias ll='ls -alF'
 # Explain (v) what was done when moving a file
 alias mv='mv -v'
 # Create any non-existent (p)arent directories and explain (v) what was done
@@ -13,16 +13,17 @@ alias mkdir='mkdir -pv'
 # Always try to (c)ontinue getting a partially-downloaded file
 alias wget='wget -c'
 
-# Copying/pasting to/from clipboard
-alias pbcopy='xclip -sel clip'
-alias pbpaste='xclip -sel clip -o'
+# Copying/pasting to/from clipboard (platform-aware)
+if [ "$DOTFILES_OS" = "linux" ]; then
+  alias pbcopy='xclip -sel clip'
+  alias pbpaste='xclip -sel clip -o'
+fi
 
 # Common typos
 alias exti='exit'
 alias eit='exit'
 alias eitx='exit'
 alias eixt='exit'
-alias eitx='exit'
 alias xit='exit'
 alias wxit='exit'
 alias wit='exit'
@@ -30,7 +31,7 @@ alias :x='exit'
 alias :q='exit'
 
 # Config
-export DOTFILES="~/Projects/dotfiles"
+export DOTFILES="$HOME/projects/dotfiles"
 
 alias vimrc="vim $DOTFILES/vim/vimrc"
 alias bashrc='vim $DOTFILES/shell/bash/bashrc'
@@ -42,35 +43,18 @@ alias config='nvim $DOTFILES'
 alias dotfiles='~/.dotfiles/install'
 
 # Miscellaneous Shortcuts
-alias c="clear"
 alias cdl="cd $1 && ls"
 alias ping8='ping 8.8.8.8'
-alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
-
-# Open Vim if there is no current background job
-alias fg='if [[ $(jobs) ]]; then fg; else nvim; fi'
-
-# Watson Time Tracker
-alias t='watson'
-alias tst='watson status'
-alias tp='watson start pa'
-
-# Quick search w/ Lynx
-alias s='lynx_search'
-
-# How Do I?
-alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
 
 # bat is cat with syntax highlighting
 alias cat='bat'
-
-# vifm
-alias v='vifm'
 
 # NPM
 alias n='pnpm run'
 alias nd='pnpm run dev'
 alias ns='pnpm run start'
 
-# Suppress message telling you to use zsh instead of bash
-export BASH_SILENCE_DEPRECATION_WARNING=1
+# macOS-only aliases
+if [ "$DOTFILES_OS" = "macos" ]; then
+  alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
+fi

@@ -7,7 +7,7 @@ fi
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jackson/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 DISABLE_AUTO_TITLE="true"
@@ -34,9 +34,6 @@ source ~/.shell/env
 source $HOME/.bash_aliases
 
 export TERM=xterm
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set tab title to current working directory
 # Use % instead of %1 to get full path
@@ -89,12 +86,17 @@ precmd_functions+=(_fix_cursor)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
-# pnpm
-export PNPM_HOME="/Users/jackson/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# Powerlevel10k theme (platform-aware)
+if [ "$DOTFILES_OS" = "macos" ]; then
+  # Homebrew install location (Intel and Apple Silicon)
+  source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null || \
+  source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
+elif [ "$DOTFILES_OS" = "linux" ]; then
+  # Arch: pacman/AUR install location
+  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
+fi
+
+# Atuin (shell history)
+[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
+command -v atuin &>/dev/null && eval "$(atuin init zsh)"

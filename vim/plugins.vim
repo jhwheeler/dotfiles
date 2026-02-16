@@ -176,7 +176,7 @@ function! s:show_documentation()
 endfunction
 
 " Python path
-let g:python3_host_prog = $GLOBALINSTALLDIR . "/usr/bin/python3"
+let g:python3_host_prog = exepath('python3')
 
 " Go imports
 let g:go_fmt_command = "goimports"
@@ -465,8 +465,8 @@ let g:startify_commands = [
       \ ]
 
 let g:startify_bookmarks = [
-      \ '~/Projects/',
-      \ '~/Projects/dotfiles',
+      \ '~/projects/',
+      \ '~/projects/dotfiles',
       \ ]
 
 let g:startify_custom_header = [
