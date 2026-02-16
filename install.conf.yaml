@@ -48,6 +48,7 @@
   - [git submodule update --init --recursive, Installing submodules]
   - [mkdir -p ~/.config, Creating config directory]
   - [mkdir -p ~/.shell, Creating shell config directory]
+  - [touch ~/.shell/secrets, Creating local secrets file (not tracked by git)]
   - [mkdir -p ~/.claude/hooks, Creating Claude Code config directory]
     # If you haven't already, run prefix-I with tmux open after doing this to reload tmux and install the plugins
   - [ if test -d "~/.tmux/plugins/tpm"; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi ]

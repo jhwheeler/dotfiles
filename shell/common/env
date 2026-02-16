@@ -4,6 +4,9 @@ case "$(uname -s)" in
   Darwin*) export DOTFILES_OS="macos";;
 esac
 
+# Local secrets (not tracked by git)
+[ -f ~/.shell/secrets ] && source ~/.shell/secrets
+
 # Use tmux if available
 if [ -z "$TMUX" ]; then
   tmux attach -t default || tmux new -s default
