@@ -6,6 +6,7 @@
 
 # Atuin (shell history)
 [ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
+command -v atuin &>/dev/null && eval "$(atuin init bash)"
 
 # Auto-start Hyprland on TTY1 (Arch)
 if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then

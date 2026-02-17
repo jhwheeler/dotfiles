@@ -10,8 +10,8 @@ case "$TYPE" in
     SOUND="/usr/share/sounds/freedesktop/stereo/dialog-warning.oga"
     ;;
   *)
-    URGENCY="critical"
-    SOUND="/usr/share/sounds/freedesktop/stereo/dialog-warning.oga"
+    URGENCY="normal"
+    SOUND="/usr/share/sounds/freedesktop/stereo/message.oga"
     ;;
 esac
 

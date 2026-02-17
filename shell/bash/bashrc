@@ -43,7 +43,7 @@ export PS1="${pathC}\w ${gitC}\$(gitBranch) ${pointerC}\$${normalC} "
 ## Custom functions
 
 function take() {
-  mkdir $1 && cd $1
+  mkdir "$1" && cd "$1"
 }
 
 # Open file with fzf

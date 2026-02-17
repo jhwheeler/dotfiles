@@ -10,7 +10,7 @@
   rebase = false
 [core]
   excludesfile = ~/.gitignore_global
-	editor = nvim
+  editor = nvim
 ; [url "git@github.com:"]
 ; 	insteadOf = https://github.com/
 [alias]

@@ -3,9 +3,13 @@
 # Always copy recursively & explain what was done
 alias cp='cp -rv'
 # List contents with colors for file types, (A)lmost all hidden files (without . and ..), in (C)olumns, with class indicators (F)
-alias ls='ls -ACF'
-# List contents with colors for file types, (a)ll hidden entries (including . and ..), use (l)ong listing format, with class indicators (F)
-alias ll='ls -alF'
+if [ "$DOTFILES_OS" = "macos" ]; then
+  alias ls='ls -ACFG'
+  alias ll='ls -alFG'
+else
+  alias ls='ls -ACF --color=auto'
+  alias ll='ls -alF --color=auto'
+fi
 # Explain (v) what was done when moving a file
 alias mv='mv -v'
 # Create any non-existent (p)arent directories and explain (v) what was done
@@ -43,7 +47,7 @@ alias config='nvim $DOTFILES'
 alias dotfiles='~/.dotfiles/install'
 
 # Miscellaneous Shortcuts
-alias cdl="cd $1 && ls"
+cdl() { cd "$1" && ls; }
 alias ping8='ping 8.8.8.8'
 
 # bat is cat with syntax highlighting
