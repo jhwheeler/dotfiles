@@ -56,15 +56,17 @@ function fe {
   [[ -n "${files[*]}" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
-# fcd - cd to selected directory
+# fcd - cd to selected directory (requires fd: https://github.com/sharkdp/fd)
 function fcd {
+  command -v fd >/dev/null || { echo "fd is required: https://github.com/sharkdp/fd"; return 1; }
   local dir
   dir=$(fd . "${1:-.}" --type=d | fzf --no-multi --layout=reverse --height=40%) &&
   cd "$dir"
 }
 
-# fcda - including hidden directories
+# fcda - including hidden directories (requires fd)
 function fcda {
+  command -v fd >/dev/null || { echo "fd is required: https://github.com/sharkdp/fd"; return 1; }
   local dir
   dir=$(fd . "${1:-.}" --hidden --type=d | fzf --no-multi --layout=reverse --height=40%) &&
   cd "$dir"

@@ -7,8 +7,12 @@ esac
 # Local secrets (not tracked by git)
 [ -f ~/.shell/secrets ] && source ~/.shell/secrets
 
-# Use tmux if available
-if [ -z "$TMUX" ]; then
+# Add to PATH only if not already present
+_path_prepend() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$1:$PATH" ;; esac; }
+_path_append() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$PATH:$1" ;; esac; }
+
+# Use tmux if available (interactive shells only)
+if [ -z "$TMUX" ] && [[ $- == *i* ]]; then
   tmux attach -t default || tmux new -s default
 fi
 
@@ -23,21 +27,21 @@ fi
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 # Vim
-export PATH=$PATH:$HOME/.vimpkg/bin
+_path_append "$HOME/.vimpkg/bin"
 
 # Scripts
-export PATH=$PATH:$HOME/projects/scripts
+_path_append "$HOME/projects/scripts"
 
 # Go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export GOPATH="$HOME/go"
+_path_append "$GOPATH/bin"
 
 # Deno
 export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+_path_prepend "$DENO_INSTALL/bin"
 
 # Cargo/Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+_path_prepend "$HOME/.cargo/bin"
 
 # This removes repeated commands in terminal history
 export HISTCONTROL=ignoreboth:erasedups
@@ -59,7 +63,7 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_DEFAULT_OPTS='
 --height 96%
 --reverse
---preview "cat {}"
+--preview "bat --color=always --style=numbers {} 2>/dev/null || cat {}"
 --bind ctrl-a:select-all
 '
 
@@ -67,14 +71,11 @@ export FZF_DEFAULT_OPTS='
 if [ "$DOTFILES_OS" = "macos" ]; then
   # Android SDK (macOS)
   export ANDROID_SDK="$HOME/Library/Android/sdk"
-  export PATH=$PATH:$ANDROID_SDK/platform-tools
+  _path_append "$ANDROID_SDK/platform-tools"
 
   # pnpm (macOS installs to ~/Library)
   export PNPM_HOME="$HOME/Library/pnpm"
-  case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-  esac
+  _path_prepend "$PNPM_HOME"
 
   # Suppress message telling you to use zsh instead of bash
   export BASH_SILENCE_DEPRECATION_WARNING=1
@@ -83,10 +84,7 @@ fi
 if [ "$DOTFILES_OS" = "linux" ]; then
   # pnpm (Linux)
   export PNPM_HOME="$HOME/.local/share/pnpm"
-  case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-  esac
+  _path_prepend "$PNPM_HOME"
 
   # Solve issue w/ fetch failing b/c of a too short timeout
   # see https://github.com/nodejs/undici/issues/2990
