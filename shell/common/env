@@ -11,11 +11,6 @@ esac
 _path_prepend() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$1:$PATH" ;; esac; }
 _path_append() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$PATH:$1" ;; esac; }
 
-# Use tmux if available (interactive shells only)
-if [ -z "$TMUX" ] && [[ $- == *i* ]]; then
-  tmux attach -t default || tmux new -s default
-fi
-
 # Use Vim
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -89,4 +84,9 @@ if [ "$DOTFILES_OS" = "linux" ]; then
   # Solve issue w/ fetch failing b/c of a too short timeout
   # see https://github.com/nodejs/undici/issues/2990
   export NODE_OPTIONS="--network-family-autoselection-attempt-timeout=500"
+fi
+
+# Use tmux if available (interactive shells only)
+if [ -z "$TMUX" ] && [[ $- == *i* ]]; then
+  tmux attach -t default || tmux new -s default
 fi

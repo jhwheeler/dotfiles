@@ -2,7 +2,5 @@
 # ~/.zprofile
 #
 
-# Auto-start Hyprland on TTY1 (Arch)
-if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
-    command -v start-hyprland &>/dev/null && exec start-hyprland
-fi
+# Shared login tasks (atuin, Hyprland auto-start, etc.)
+[ -f ~/.shell/login ] && . ~/.shell/login

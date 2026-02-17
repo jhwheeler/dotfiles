@@ -88,15 +88,20 @@ precmd_functions+=(_fix_cursor)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Powerlevel10k theme (platform-aware)
+_p10k_loaded=0
 if [ "$DOTFILES_OS" = "macos" ]; then
   # Homebrew install location (Intel and Apple Silicon)
   source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null || \
-  source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
+  source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null && _p10k_loaded=1
 elif [ "$DOTFILES_OS" = "linux" ]; then
   # Arch: pacman/AUR install location
-  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null
+  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2>/dev/null && _p10k_loaded=1
 fi
+[[ $_p10k_loaded -eq 0 ]] && echo "Warning: powerlevel10k not found"
+unset _p10k_loaded
+
+# Shared functions (fzf helpers, etc.)
+[ -f ~/.shell/functions ] && source ~/.shell/functions
 
 # Atuin (shell history)
-[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
 command -v atuin &>/dev/null && eval "$(atuin init zsh)"

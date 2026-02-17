@@ -19,4 +19,4 @@ case "$TYPE" in
 esac
 
 notify-send -a "Claude Code" -u "$URGENCY" "$TITLE" "$MESSAGE"
-command -v pw-play >/dev/null && pw-play "$SOUND" &
+command -v pw-play >/dev/null && pw-play "$SOUND" & disown

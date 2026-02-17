@@ -30,6 +30,8 @@
 
     # Shell
     ~/.shell/env: shell/common/env
+    ~/.shell/functions: shell/common/functions
+    ~/.shell/login: shell/common/login
     ~/.bash_aliases: shell/common/aliases
     ~/.bash_profile: shell/bash/bash_profile
     ~/.bashrc: shell/bash/bashrc
