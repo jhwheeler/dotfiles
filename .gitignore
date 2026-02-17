@@ -1,0 +1,11 @@
+# State files
+vifm/vifm/vifminfo
+vifm/vifminfo
+
+# OS files
+.DS_Store
+
+# Secrets (never commit these)
+shell/common/secrets
+*.secret
+.env

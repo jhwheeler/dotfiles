@@ -6,13 +6,11 @@
 [user]
   name = Jackson Holiday Wheeler
   email = jhwheeler@gmail.com
-[credential]
-  helper = osxkeychain
 [pull]
   rebase = false
 [core]
-  excludesfile = /Users/jackson/.gitignore_global
-	editor = nvim
+  excludesfile = ~/.gitignore_global
+  editor = nvim
 ; [url "git@github.com:"]
 ; 	insteadOf = https://github.com/
 [alias]
@@ -46,3 +44,5 @@
   templatedir = ~/.git_template
 [commit]
   verbose = true
+[include]
+  path = ~/.gitconfig.local

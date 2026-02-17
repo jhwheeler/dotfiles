@@ -1,0 +1,6 @@
+#
+# ~/.zprofile
+#
+
+# Shared login tasks (atuin, Hyprland auto-start, etc.)
+[ -f ~/.shell/login ] && . ~/.shell/login

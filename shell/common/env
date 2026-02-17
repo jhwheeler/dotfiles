@@ -1,7 +1,15 @@
-# Use tmux if available
-if [ -z "$TMUX" ]; then
-  tmux attach -t default || tmux new -s default
-fi
+# OS detection
+case "$(uname -s)" in
+  Linux*)  export DOTFILES_OS="linux";;
+  Darwin*) export DOTFILES_OS="macos";;
+esac
+
+# Local secrets (not tracked by git)
+[ -f ~/.shell/secrets ] && source ~/.shell/secrets
+
+# Add to PATH only if not already present
+_path_prepend() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$1:$PATH" ;; esac; }
+_path_append() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$PATH:$1" ;; esac; }
 
 # Use Vim
 if [[ -n $SSH_CONNECTION ]]; then
@@ -11,29 +19,24 @@ else
 fi
 
 # SCM Breeze
-[ -s "/Users/jackson/.scm_breeze/scm_breeze.sh" ] && source "/Users/jackson/.scm_breeze/scm_breeze.sh"
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 # Vim
-export PATH=$PATH:~/.vimpkg/bin
+_path_append "$HOME/.vimpkg/bin"
 
 # Scripts
-export PATH=$PATH:~/scripts
-
-# Lynx web browser
-export LYNX_LSS=$HOME/.config/lynx/lynx.lss
-export LYNX_CFG=$HOME/.config/lynx/lynx.cfg
+_path_append "$HOME/projects/scripts"
 
 # Go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-# Android
-export ANDROID_SDK=/Users/jackson/Library/Android/sdk
-export PATH=$PATH:/Users/jackson/platform-tools
+export GOPATH="$HOME/go"
+_path_append "$GOPATH/bin"
 
 # Deno
-export DENO_INSTALL="/Users/jackson/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+export DENO_INSTALL="$HOME/.deno"
+_path_prepend "$DENO_INSTALL/bin"
+
+# Cargo/Rust
+_path_prepend "$HOME/.cargo/bin"
 
 # This removes repeated commands in terminal history
 export HISTCONTROL=ignoreboth:erasedups
@@ -48,14 +51,42 @@ export REVIEW_BASE=master
 # bat syntax highlighting
 export BAT_THEME="Dracula"
 
-
 # FZF Config
-export FZF_DEFAULT_COMMAND='rg --files --hidden  --no-ignore-vcs -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*,*/bundle/*}"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*,*/bundle/*}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_DEFAULT_OPTS='
 --height 96%
 --reverse
---preview "cat {}"
+--preview "bat --color=always --style=numbers {} 2>/dev/null || cat {}"
 --bind ctrl-a:select-all
 '
+
+# Platform-specific config
+if [ "$DOTFILES_OS" = "macos" ]; then
+  # Android SDK (macOS)
+  export ANDROID_SDK="$HOME/Library/Android/sdk"
+  _path_append "$ANDROID_SDK/platform-tools"
+
+  # pnpm (macOS installs to ~/Library)
+  export PNPM_HOME="$HOME/Library/pnpm"
+  _path_prepend "$PNPM_HOME"
+
+  # Suppress message telling you to use zsh instead of bash
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
+
+if [ "$DOTFILES_OS" = "linux" ]; then
+  # pnpm (Linux)
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+  _path_prepend "$PNPM_HOME"
+
+  # Solve issue w/ fetch failing b/c of a too short timeout
+  # see https://github.com/nodejs/undici/issues/2990
+  export NODE_OPTIONS="--network-family-autoselection-attempt-timeout=500"
+fi
+
+# Use tmux if available (interactive shells only)
+if [ -z "$TMUX" ] && [[ $- == *i* ]]; then
+  tmux attach -t default || tmux new -s default
+fi

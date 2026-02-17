@@ -12,8 +12,6 @@ fi
 # Activate vim mode
 set -o vi
 
-# TODO: Figure out why the cursor isn't changing in insert mode
-
 # Remove mode-switching delay
 KEYTIMEOUT=1
 
@@ -42,8 +40,5 @@ export PS1="${pathC}\w ${gitC}\$(gitBranch) ${pointerC}\$${normalC} "
 # FZF (full config is in ~/.shell/env)
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-## Custom functions
-
-function take() {
-  mkdir $1 && cd $1
-}
+## Shared functions (fzf helpers, etc.)
+[ -f ~/.shell/functions ] && source ~/.shell/functions

@@ -1,3 +1,10 @@
-source ~/.bashrc
+#
+# ~/.bash_profile
+#
 
-export PATH="$HOME/.cargo/bin:$PATH"
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# Shared login tasks (atuin, Hyprland auto-start, etc.)
+[ -f ~/.shell/login ] && . ~/.shell/login
+
+command -v atuin &>/dev/null && eval "$(atuin init bash)"
