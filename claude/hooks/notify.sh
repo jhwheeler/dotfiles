@@ -1,4 +1,7 @@
 #!/bin/bash
+command -v jq >/dev/null || exit 0
+command -v notify-send >/dev/null || exit 0
+
 INPUT=$(cat)
 TITLE=$(printf '%s' "$INPUT" | jq -r '.title // "Claude Code"')
 MESSAGE=$(printf '%s' "$INPUT" | jq -r '.message // "Needs attention"')
@@ -16,4 +19,4 @@ case "$TYPE" in
 esac
 
 notify-send -a "Claude Code" -u "$URGENCY" "$TITLE" "$MESSAGE"
-pw-play "$SOUND" &
+command -v pw-play >/dev/null && pw-play "$SOUND" &

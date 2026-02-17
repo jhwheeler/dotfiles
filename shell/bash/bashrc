@@ -123,7 +123,7 @@ function fbr {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
     branch=$(echo "$branches" |
-    fzf --delimiter=$(( 2 + $(wc -l <<< "$branches") )) --no-multi --layout=reverse --height=40%) &&
+    fzf --no-multi --layout=reverse --height=40%) &&
     git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
 }
 

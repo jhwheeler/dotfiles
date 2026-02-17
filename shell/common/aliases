@@ -35,7 +35,7 @@ alias :x='exit'
 alias :q='exit'
 
 # Config
-export DOTFILES="$HOME/projects/dotfiles"
+export DOTFILES="$HOME/.dotfiles"
 
 alias vimrc="vim $DOTFILES/vim/vimrc"
 alias bashrc='vim $DOTFILES/shell/bash/bashrc'
