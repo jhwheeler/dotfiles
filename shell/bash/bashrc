@@ -52,8 +52,8 @@ function take() {
 #   - Exit if there's no match (--exit-0)
 function fe {
   local files
-  IFS=$'\n' files=($(fzf --query="$1" --multi --select-1 --exit-0))
-  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+  IFS=$'\n' readarray -t files < <(fzf --query="$1" --multi --select-1 --exit-0)
+  [[ -n "${files[*]}" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
 # fcd - cd to selected directory
@@ -108,12 +108,12 @@ function fgst {
     sha="${sha%% *}"
     [[ -z "$sha" ]] && continue
     if [[ "$k" == 'ctrl-d' ]]; then
-      git diff $sha
+      git diff "$sha"
     elif [[ "$k" == 'ctrl-b' ]]; then
-      git stash branch "stash-$sha" $sha
+      git stash branch "stash-$sha" "$sha"
       break;
     else
-      git stash show -p $sha
+      git stash show -p "$sha"
     fi
   done
 }
@@ -124,7 +124,7 @@ function fbr {
   branches=$(git branch --all | grep -v HEAD) &&
     branch=$(echo "$branches" |
     fzf --delimiter=$(( 2 + $(wc -l <<< "$branches") )) --no-multi --layout=reverse --height=40%) &&
-    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+    git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
 }
 
 # fcoc - checkout git commit
@@ -132,7 +132,7 @@ function fcoc {
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
   commit=$(echo "$commits" | fzf --tac --no-sort --no-multi --exact) &&
-  git checkout $(echo "$commit" | sed "s/ .*//")
+  git checkout "$(echo "$commit" | sed "s/ .*//")"
 }
 
 # fta - tmux attach session with fzf
@@ -140,5 +140,5 @@ function fta {
   local session
   session=$(tmux list-sessions -F "#{session_name}" | \
     fzf --layout=reverse --height=20% --query="$1" --select-1 --exit-0) &&
-  tmux -CC attach -d -t "$session"
+  tmux attach -d -t "$session"
 }

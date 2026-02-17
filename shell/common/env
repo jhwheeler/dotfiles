@@ -23,10 +23,10 @@ fi
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 # Vim
-export PATH=$PATH:~/.vimpkg/bin
+export PATH=$PATH:$HOME/.vimpkg/bin
 
 # Scripts
-export PATH=$PATH:~/projects/scripts
+export PATH=$PATH:$HOME/projects/scripts
 
 # Go
 export GOPATH=$HOME/go
