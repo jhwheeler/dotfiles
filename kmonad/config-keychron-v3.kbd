@@ -1,0 +1,40 @@
+;; Kmonad Configuration: Remap Caps Lock to Control (held) and Escape (tapped)
+
+(defcfg
+  ;; Input device (replace with your keyboard's event file)
+  input  (device-file "/dev/input/by-id/usb-Keychron_Keychron_V3-event-kbd")
+
+  ;; Output device
+  output (uinput-sink "kmonad")
+
+  ;; Enable fallthrough to allow other keys to pass through
+  fallthrough true
+
+  ;; Allow Kmonad to accept commands
+  allow-cmd true
+)
+
+;; Source Layout: Define the physical key mappings (Standard US QWERTY)
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+;; Alias Definition: Dual-role for Caps Lock
+(defalias
+  capc (tap-hold-next-release 200 esc lctl)
+)
+
+;; Layer Definitions
+(deflayer main
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @capc a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)

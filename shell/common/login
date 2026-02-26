@@ -1,0 +1,9 @@
+# Shared login tasks (sourced by bash_profile and zprofile)
+
+# Atuin (shell history)
+[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
+
+# Auto-start Hyprland on TTY1 (Arch)
+if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
+    command -v start-hyprland &>/dev/null && exec start-hyprland
+fi
