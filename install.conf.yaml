@@ -4,48 +4,67 @@
 
 - clean: ['~']
 
+- create:
+  - ~/.config
+  - ~/.shell
+  - ~/.claude/hooks
+  - ~/.tmux/scripts
+
 - link:
     ~/.dotfiles: ''
 
-    # Package manager
-    ~/Brewfile: brew/Brewfile
-
-    # Terminal
-    ~/.config/alacritty: alacritty
-
     # Terminal multiplexer
     ~/.tmux.conf: tmux.conf
+    ~/.tmux/scripts/sessions.sh: tmux/scripts/sessions.sh
 
-    # Vim
-    ~/.vimrc: vim/vimrc
-    ~/.vim/plugin: vim/plugin
-    ~/.vim/maps.vim: vim/maps.vim
-    ~/.vim/plugins.vim: vim/plugins.vim
-    ~/.vim/filetype.vim: vim/filetype.vim
-    ~/.vim/ftplugin: vim/ftplugin
-    ~/.vim/doc: vim/doc
-    ~/.vim/spell: vim/spell
+    # Hyprland (window manager)
+    ~/.config/hypr: hypr
 
-    # Shell
-    ~/.shell/env: shell/common/env
-    ~/.bash_aliases: shell/common/aliases
-    ~/.bash_profile: shell/bash/bash_profile
-    ~/.bashrc: shell/bash/bashrc
-    ~/.inputrc: shell/bash/inputrc
-    ~/.zshrc: shell/zsh/zshrc
+    # Waybar (panel)
+    ~/.config/waybar: waybar
+
+    # Kitty (terminal)
+    ~/.config/kitty: kitty
+
+    # Mako (notifications)
+    ~/.config/mako: mako
+
+    # Swaylock (lock screen)
+    ~/.config/swaylock: swaylock
+
+    # Starship (prompt)
+    ~/.config/starship.toml: starship.toml
+
+    # KMonad (keyboard remapping)
+    ~/.config/kmonad: kmonad
+
+    # Lazygit
+    ~/.config/lazygit: lazygit
 
     # Git
     ~/.gitconfig: git/gitconfig
     ~/.gitignore_global: git/gitignore_global
     ~/.git_template: git/git_template
+    ~/.config/git/ignore: git/ignore
+
+    # Shell
+    ~/.shell/env: shell/common/env
+    ~/.shell/functions: shell/common/functions
+    ~/.shell/login: shell/common/login
+    ~/.bash_aliases: shell/common/aliases
+    ~/.bash_profile: shell/bash/bash_profile
+    ~/.bashrc: shell/bash/bashrc
+    ~/.inputrc: shell/bash/inputrc
+
+    # Claude Code
+    ~/.claude/settings.json: claude/settings.json
+    ~/.claude/hooks/notify.sh: claude/hooks/notify.sh
 
     # Fuzzy finder
     ~/.fzf.bash: fzf/fzf.bash
-    ~/.fzf.zsh: fzf/fzf.zsh
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - [mkdir -p ~/.config, Creating config directory]
-  - [mkdir -p ~/.shell, Creating shell config directory]
+  - [touch ~/.shell/secrets, Creating local secrets file (not tracked by git)]
     # If you haven't already, run prefix-I with tmux open after doing this to reload tmux and install the plugins
-  - [ if test -d "~/.tmux/plugins/tpm"; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi ]
+  - [ if ! test -d "$HOME/.tmux/plugins/tpm"; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi ]
