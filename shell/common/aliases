@@ -15,9 +15,11 @@ alias wget='wget -c'
 # Colorize grep output
 alias grep='grep --color=auto'
 
-# Copying/pasting to/from Wayland clipboard
-alias pbcopy='wl-copy'
-alias pbpaste='wl-paste'
+# Copying/pasting to/from Wayland clipboard — only set when Wayland is running
+if [[ -n "$WAYLAND_DISPLAY" ]]; then
+  alias pbcopy='wl-copy'
+  alias pbpaste='wl-paste'
+fi
 
 # Common typos
 alias exti='exit'
@@ -64,8 +66,11 @@ alias s='lynx_search'
 # How Do I?
 alias h='function hdi(){ howdoi $* -c -n 5; }; hdi'
 
-# bat is cat with syntax highlighting
-alias cat='bat'
+# bat is cat with syntax highlighting — only alias if installed
+command -v bat &>/dev/null && alias cat='bat'
+
+# kitty SSH integration — fixes colors/terminfo on all SSH connections from kitty
+command -v kitten &>/dev/null && alias ssh='kitten ssh'
 
 # NPM
 alias n='pnpm run'

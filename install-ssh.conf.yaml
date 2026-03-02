@@ -1,0 +1,48 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ["~"]
+
+- create:
+    - ~/.config
+    - ~/.shell
+    - ~/.tmux/scripts
+    - ~/.config/atuin
+
+- link:
+    # Multiplexer
+    ~/.tmux.conf: tmux.conf
+    ~/.tmux/scripts/sessions.sh: tmux/scripts/sessions.sh
+
+    # Shell
+    ~/.shell/env: shell/common/env
+    ~/.shell/functions: shell/common/functions
+    ~/.shell/login: shell/common/login
+    ~/.shell/ssh: shell/common/ssh
+    ~/.bash_aliases: shell/common/aliases
+    ~/.bash_profile: shell/bash/bash_profile
+    ~/.bashrc: shell/bash/bashrc
+    ~/.inputrc: shell/bash/inputrc
+
+    # Prompt
+    ~/.config/starship.toml: starship.toml
+
+    # Git
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore_global: git/gitignore_global
+    ~/.git_template: git/git_template
+
+    # Atuin history
+    ~/.config/atuin/config.toml: atuin/config.toml
+
+    # Lazygit
+    ~/.config/lazygit: lazygit
+
+- shell:
+    - [git submodule update --init --recursive dotbot, Updating dotbot]
+    - [touch ~/.shell/secrets, Creating secrets file]
+    - [
+        "[ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm",
+        Installing TPM,
+      ]

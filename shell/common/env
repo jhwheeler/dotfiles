@@ -5,12 +5,10 @@
 _path_prepend() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$1:$PATH" ;; esac; }
 _path_append() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$PATH:$1" ;; esac; }
 
-# Use Vim
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+command -v nvim &>/dev/null && export EDITOR='nvim' || export EDITOR='vim'
+
+# SSH-specific overrides (clipboard, etc.)
+[[ -n "$SSH_CONNECTION" ]] && [ -f ~/.shell/ssh ] && source ~/.shell/ssh
 
 # Scripts
 _path_append "$HOME/scripts"

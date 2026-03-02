@@ -9,6 +9,7 @@
   - ~/.shell
   - ~/.claude/hooks
   - ~/.tmux/scripts
+  - ~/.config/atuin
 
 - link:
     ~/.dotfiles: ''
@@ -51,6 +52,7 @@
     ~/.shell/env: shell/common/env
     ~/.shell/functions: shell/common/functions
     ~/.shell/login: shell/common/login
+    ~/.shell/ssh: shell/common/ssh
     ~/.bash_aliases: shell/common/aliases
     ~/.bash_profile: shell/bash/bash_profile
     ~/.bashrc: shell/bash/bashrc
@@ -59,6 +61,9 @@
     # Claude Code
     ~/.claude/settings.json: claude/settings.json
     ~/.claude/hooks/notify.sh: claude/hooks/notify.sh
+
+    # Atuin history
+    ~/.config/atuin/config.toml: atuin/config.toml
 
     # Fuzzy finder
     ~/.fzf.bash: fzf/fzf.bash
