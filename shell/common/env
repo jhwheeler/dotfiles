@@ -20,6 +20,8 @@ export LYNX_CFG=$HOME/.config/lynx/lynx.cfg
 # Go
 export GOPATH="$HOME/go"
 _path_append "$GOPATH/bin"
+# Go toolchain binary (system-installed, e.g. /usr/local/go on servers)
+[ -d /usr/local/go/bin ] && _path_prepend /usr/local/go/bin
 
 # Deno
 export DENO_INSTALL="$HOME/.deno"

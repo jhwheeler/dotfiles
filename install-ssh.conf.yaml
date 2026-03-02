@@ -22,7 +22,9 @@
     ~/.shell/ssh: shell/common/ssh
     ~/.bash_aliases: shell/common/aliases
     ~/.bash_profile: shell/bash/bash_profile
-    ~/.bashrc: shell/bash/bashrc
+    ~/.bashrc:
+      path: shell/bash/bashrc
+      force: true
     ~/.inputrc: shell/bash/inputrc
 
     # Prompt
