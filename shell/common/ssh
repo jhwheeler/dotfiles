@@ -3,6 +3,7 @@
 
 # OSC52 clipboard: copies to local clipboard through SSH tunnel
 # (supported by kitty, wezterm, most modern terminals)
+# pbpaste via OSC52 is not widely supported — skipped intentionally
 alias pbcopy='printf "\033]52;c;%s\a" "$(base64 -w0)"'
 
 # tools that may not exist on remote — safe fallbacks

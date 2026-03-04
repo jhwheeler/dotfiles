@@ -3,7 +3,7 @@ set -euo pipefail
 
 DOTFILES_REPO="https://github.com/jhwheeler/dotfiles.git"
 DOTFILES_DIR="$HOME/projects/dotfiles"
-NVIM_FORK="git://github.com/jhwheeler/NormalNvim.git"
+NVIM_FORK="https://github.com/jhwheeler/NormalNvim.git"
 
 info() { printf "\n\033[0;34m==> %s\033[0m\n" "$*"; }
 ok()   { printf "\033[0;32m✓ %s\033[0m\n" "$*"; }
@@ -42,7 +42,8 @@ cd "$DOTFILES_DIR"
 info "Installing Neovim"
 mkdir -p "$HOME/.local/bin"
 if ! command -v nvim &>/dev/null; then
-  NVIM_URL="https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage"
+  ARCH=$(uname -m)
+  NVIM_URL="https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${ARCH}.appimage"
   curl -L "$NVIM_URL" -o "$HOME/.local/bin/nvim"
   chmod +x "$HOME/.local/bin/nvim"
   ok "Neovim installed"
@@ -68,6 +69,20 @@ fi
 info "Installing Atuin (local history)"
 if ! command -v atuin &>/dev/null; then
   curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+fi
+
+# ── Lazygit ───────────────────────────────────────────────────────────────────
+info "Installing Lazygit"
+if ! command -v lazygit &>/dev/null; then
+  LG_ARCH=$(uname -m)
+  [[ "$LG_ARCH" == "aarch64" ]] && LG_ARCH="arm64"
+  LG_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep '"tag_name"' | sed 's/.*"v\([^"]*\)".*/\1/')
+  curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LG_VERSION}_Linux_${LG_ARCH}.tar.gz"
+  tar -xf /tmp/lazygit.tar.gz -C "$HOME/.local/bin" lazygit
+  rm /tmp/lazygit.tar.gz
+  ok "Lazygit installed"
+else
+  ok "Lazygit already installed ($(lazygit --version))"
 fi
 
 # ── TPM plugins ───────────────────────────────────────────────────────────────
