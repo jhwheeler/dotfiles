@@ -88,11 +88,8 @@ if [[ -z "$CLAUDECODE" ]] && [ -z "$TMUX" ] && [[ $- == *i* ]]; then
     tmux attach -d -t "$_tmux_session" || tmux new -s "$_tmux_session"
     unset _tmux_session
   else
-    # Create base session if needed, then attach a grouped session for an
-    # independent view (so multiple terminals aren't mirrored).
-    # detach-on-destroy on (session-level) ensures closing this terminal
-    # doesn't fall through to the base session. exec closes the terminal on detach.
-    tmux has-session -t default 2>/dev/null || tmux new-session -d -s default
-    exec tmux new-session -t default \; set-option detach-on-destroy on
+    # Each terminal gets its own session (no mirroring).
+    # detach-on-destroy off lets you cycle to other sessions if you want.
+    exec tmux new-session
   fi
 fi
