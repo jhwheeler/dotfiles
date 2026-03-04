@@ -83,5 +83,11 @@ export NODE_OPTIONS="--network-family-autoselection-attempt-timeout=500"
 
 # Use tmux if available (interactive shells only, skip in Claude Code)
 if [[ -z "$CLAUDECODE" ]] && [ -z "$TMUX" ] && [[ $- == *i* ]]; then
-  tmux attach -t default || tmux new -s default
+  if [[ -n "$SSH_CONNECTION" ]]; then
+    _tmux_session="ssh-$(hostname -s)"
+    tmux attach -d -t "$_tmux_session" || tmux new -s "$_tmux_session"
+    unset _tmux_session
+  else
+    tmux attach -t default || tmux new -s default
+  fi
 fi

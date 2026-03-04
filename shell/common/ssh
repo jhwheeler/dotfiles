@@ -1,6 +1,9 @@
 # SSH-specific shell overrides
 # Sourced automatically when $SSH_CONNECTION is set (see shell/common/env)
 
+# Disable XON/XOFF flow control so C-s (tmux prefix over SSH) isn't swallowed
+stty -ixon
+
 # OSC52 clipboard: copies to local clipboard through SSH tunnel
 # (supported by kitty, wezterm, most modern terminals)
 # pbpaste via OSC52 is not widely supported — skipped intentionally
