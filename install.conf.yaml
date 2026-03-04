@@ -75,3 +75,5 @@
   - [ if ! test -d "$HOME/.tmux/plugins/tpm"; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi ]
     # Clone nvim config (NormalNvim fork) — lazy.nvim bootstraps plugins on first launch
   - [ if ! test -d "$HOME/.config/nvim"; then git clone https://github.com/jhwheeler/NormalNvim.git ~/.config/nvim; fi ]
+    # SCM Breeze (git aliases, numbered shortcuts)
+  - [ if ! test -d "$HOME/.scm_breeze"; then git clone https://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze && ~/.scm_breeze/install.sh; fi ]
