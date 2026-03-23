@@ -6,3 +6,7 @@
 
 # Shared login tasks (atuin, Hyprland auto-start, etc.)
 [ -f ~/.shell/login ] && . ~/.shell/login
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

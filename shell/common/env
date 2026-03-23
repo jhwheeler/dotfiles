@@ -5,12 +5,6 @@
 _path_prepend() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$1:$PATH" ;; esac; }
 _path_append() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$PATH:$1" ;; esac; }
 
-if command -v nvim &>/dev/null; then
-  export EDITOR='nvim'
-else
-  export EDITOR='vim'
-fi
-
 # SSH-specific overrides (clipboard, etc.)
 [[ -n "$SSH_CONNECTION" ]] && [ -f ~/.shell/ssh ] && source ~/.shell/ssh
 
@@ -43,6 +37,13 @@ _path_append "$HOME/.local/bin"
 
 # opencode
 _path_prepend "$HOME/.opencode/bin"
+
+# Set EDITOR after PATH is fully configured so nvim can be found
+if command -v nvim &>/dev/null; then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
 
 # NVM
 export NVM_DIR="$HOME/.nvm"

@@ -61,3 +61,16 @@ fi
 # Atuin (shell history)
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 command -v atuin &>/dev/null && eval "$(atuin init bash)"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# OpenClaw Completion
+source "/home/rheo/.openclaw/completions/openclaw.bash"
+export PATH="$HOME/projects/scripts:$PATH"
+
+# Open file in $EDITOR via fzf
+fe() {
+  local file
+  file=$(fzf --preview 'cat {}') && ${EDITOR:-vim} "$file"
+}
