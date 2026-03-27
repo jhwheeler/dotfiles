@@ -44,9 +44,11 @@ else
   pointerC="${txtwht}"
   normalC="${txtrst}"
 
-  # get name of branch and wrap in parens
+  # Get the current branch name without color codes so PS1 length stays correct.
   gitBranch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    local branch
+    branch=$(git branch --show-current --no-color 2>/dev/null) || return
+    [[ -n "$branch" ]] && printf '(%s)' "$branch"
   }
   # build the prompt
   export PS1="${pathC}\w ${gitC}\$(gitBranch) ${pointerC}\$${normalC} "
