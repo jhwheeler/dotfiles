@@ -44,9 +44,11 @@ else
   pointerC="${txtwht}"
   normalC="${txtrst}"
 
-  # get name of branch and wrap in parens
+  # Get the current branch name without color codes so PS1 length stays correct.
   gitBranch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    local branch
+    branch=$(git branch --show-current --no-color 2>/dev/null) || return
+    [[ -n "$branch" ]] && printf '(%s)' "$branch"
   }
   # build the prompt
   export PS1="${pathC}\w ${gitC}\$(gitBranch) ${pointerC}\$${normalC} "
@@ -61,3 +63,16 @@ fi
 # Atuin (shell history)
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 command -v atuin &>/dev/null && eval "$(atuin init bash)"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init bash)"; fi
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# OpenClaw Completion
+source "/home/rheo/.openclaw/completions/openclaw.bash"
+export PATH="$HOME/projects/scripts:$PATH"
+
+# Open file in $EDITOR via fzf
+fe() {
+  local file
+  file=$(fzf --preview 'cat {}') && ${EDITOR:-vim} "$file"
+}

@@ -9,6 +9,7 @@
   - ~/.shell
   - ~/.claude/hooks
   - ~/.tmux/scripts
+  - ~/.config/atuin
 
 - link:
     ~/.dotfiles: ''
@@ -51,6 +52,7 @@
     ~/.shell/env: shell/common/env
     ~/.shell/functions: shell/common/functions
     ~/.shell/login: shell/common/login
+    ~/.shell/ssh: shell/common/ssh
     ~/.bash_aliases: shell/common/aliases
     ~/.bash_profile: shell/bash/bash_profile
     ~/.bashrc: shell/bash/bashrc
@@ -60,6 +62,9 @@
     ~/.claude/settings.json: claude/settings.json
     ~/.claude/hooks/notify.sh: claude/hooks/notify.sh
 
+    # Atuin history
+    ~/.config/atuin/config.toml: atuin/config.toml
+
     # Fuzzy finder
     ~/.fzf.bash: fzf/fzf.bash
 
@@ -68,3 +73,7 @@
   - [touch ~/.shell/secrets, Creating local secrets file (not tracked by git)]
     # If you haven't already, run prefix-I with tmux open after doing this to reload tmux and install the plugins
   - [ if ! test -d "$HOME/.tmux/plugins/tpm"; then git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm; fi ]
+    # Clone nvim config (NormalNvim fork) — lazy.nvim bootstraps plugins on first launch
+  - [ if ! test -d "$HOME/.config/nvim"; then git clone https://github.com/jhwheeler/NormalNvim.git ~/.config/nvim; fi ]
+    # SCM Breeze (git aliases, numbered shortcuts)
+  - [ if ! test -d "$HOME/.scm_breeze"; then git clone https://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze && ~/.scm_breeze/install.sh; fi ]

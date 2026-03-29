@@ -1,0 +1,16 @@
+# SSH-specific shell overrides
+# Sourced automatically when $SSH_CONNECTION is set (see shell/common/env)
+
+# Disable XON/XOFF flow control so C-s (tmux prefix over SSH) isn't swallowed
+stty -ixon
+
+# OSC52 clipboard: copies to local clipboard through SSH tunnel
+# (supported by kitty, wezterm, most modern terminals)
+# pbpaste via OSC52 is not widely supported — skipped intentionally
+alias pbcopy='printf "\033]52;c;%s\a" "$(base64 -w0)"'
+
+# tools that may not exist on remote — safe fallbacks
+command -v bat &>/dev/null || unalias cat 2>/dev/null
+
+# Prevent Hyprland-specific aliases from failing
+unalias s 2>/dev/null  # lynx_search (may not be installed)
