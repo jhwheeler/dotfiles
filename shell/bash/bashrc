@@ -25,7 +25,6 @@ set -o vi
 # Remove mode-switching delay
 KEYTIMEOUT=1
 
-
 ## Prompt
 
 # Use starship if available, otherwise fall back to custom PS1
@@ -36,7 +35,7 @@ else
   txtcyn='\[\e[0;96m\]' # Cyan
   txtpur='\[\e[0;35m\]' # Purple
   txtwht='\[\e[0;37m\]' # White
-  txtrst='\[\e[0m\]' # Text Reset
+  txtrst='\[\e[0m\]'    # Text Reset
 
   # assign colours to prompt segments
   pathC="${txtcyn}"
@@ -46,7 +45,7 @@ else
 
   # get name of branch and wrap in parens
   gitBranch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
   }
   # build the prompt
   export PS1="${pathC}\w ${gitC}\$(gitBranch) ${pointerC}\$${normalC} "

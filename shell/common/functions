@@ -103,3 +103,32 @@ fta() {
     fzf --layout=reverse --height=20% --query="$1" --select-1 --exit-0) &&
   tmux attach -d -t "$session"
 }
+
+# psql connected to Peterson Academy Supabase
+# Reads SUPABASE_DB_DIRECT_URL from packages/app/.env so creds aren't hard-coded here.
+psql-pa() {
+  local env_file="$HOME/projects/pa/web/packages/app/.env"
+  if [[ ! -f "$env_file" ]]; then
+    echo "psql-pa: env file not found at $env_file" >&2
+    return 1
+  fi
+  local url
+  url=$(grep -E '^SUPABASE_DB_DIRECT_URL=' "$env_file" | head -1 | cut -d= -f2-)
+  url="${url%\"}"; url="${url#\"}"
+  url="${url%\'}"; url="${url#\'}"
+  if [[ -z "$url" ]]; then
+    echo "psql-pa: SUPABASE_DB_DIRECT_URL not set in $env_file" >&2
+    return 1
+  fi
+  psql "$url" "$@"
+}
+
+# psql connected to local Supabase (defaults from `supabase start`)
+psql-pa-local() {
+  psql "postgresql://postgres:postgres@localhost:54322/postgres" "$@"
+}
+
+# pgcli connected to local Supabase (defaults from `supabase start`)
+pgcli-pa-local() {
+  pgcli "postgresql://postgres:postgres@localhost:54322/postgres" "$@"
+}

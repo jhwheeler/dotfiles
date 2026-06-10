@@ -93,3 +93,6 @@ if [[ -z "$CLAUDECODE" ]] && [ -z "$TMUX" ] && [[ $- == *i* ]]; then
     exec tmux new-session
   fi
 fi
+
+# PSQL
+export PG_COLOR="always"
