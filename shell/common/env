@@ -1,39 +1,57 @@
-# Use tmux if available
-if [ -z "$TMUX" ]; then
-  tmux attach -t default || tmux new -s default
-fi
+# Local secrets (not tracked by git)
+[ -f ~/.shell/secrets ] && source ~/.shell/secrets
 
-# Use Vim
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
+# Add to PATH only if not already present
+_path_prepend() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$1:$PATH" ;; esac; }
+_path_append() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$PATH:$1" ;; esac; }
+
+if command -v nvim &>/dev/null; then
   export EDITOR='nvim'
+else
+  export EDITOR='vim'
 fi
 
-# SCM Breeze
-[ -s "/Users/jackson/.scm_breeze/scm_breeze.sh" ] && source "/Users/jackson/.scm_breeze/scm_breeze.sh"
-
-# Vim
-export PATH=$PATH:~/.vimpkg/bin
+# SSH-specific overrides (clipboard, etc.)
+[[ -n "$SSH_CONNECTION" ]] && [ -f ~/.shell/ssh ] && source ~/.shell/ssh
 
 # Scripts
-export PATH=$PATH:~/scripts
+_path_append "$HOME/scripts"
 
 # Lynx web browser
 export LYNX_LSS=$HOME/.config/lynx/lynx.lss
 export LYNX_CFG=$HOME/.config/lynx/lynx.cfg
 
 # Go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-# Android
-export ANDROID_SDK=/Users/jackson/Library/Android/sdk
-export PATH=$PATH:/Users/jackson/platform-tools
+export GOPATH="$HOME/go"
+_path_append "$GOPATH/bin"
+# Go toolchain binary (system-installed, e.g. /usr/local/go on servers)
+[ -d /usr/local/go/bin ] && _path_prepend /usr/local/go/bin
 
 # Deno
-export DENO_INSTALL="/Users/jackson/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+export DENO_INSTALL="$HOME/.deno"
+_path_prepend "$DENO_INSTALL/bin"
+
+# Cargo/Rust
+_path_prepend "$HOME/.cargo/bin"
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+_path_prepend "$PNPM_HOME"
+
+# pipx
+_path_append "$HOME/.local/bin"
+
+# opencode
+_path_prepend "$HOME/.opencode/bin"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Google Cloud SDK
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
 # This removes repeated commands in terminal history
 export HISTCONTROL=ignoreboth:erasedups
@@ -48,14 +66,33 @@ export REVIEW_BASE=master
 # bat syntax highlighting
 export BAT_THEME="Dracula"
 
-
 # FZF Config
-export FZF_DEFAULT_COMMAND='rg --files --hidden  --no-ignore-vcs -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*,*/bundle/*}"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{.git/*,__sapper__/*,functions/__sapper__/*,node_modules/*,*/node_modules/*,.vscode/*,.firebase/*,*/bundle/*}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 export FZF_DEFAULT_OPTS='
 --height 96%
 --reverse
---preview "cat {}"
+--preview "bat --color=always --style=numbers {} 2>/dev/null || cat {}"
 --bind ctrl-a:select-all
 '
+
+# Solve issue w/ fetch failing b/c of a too short timeout
+# see https://github.com/nodejs/undici/issues/2990
+export NODE_OPTIONS="--network-family-autoselection-attempt-timeout=500"
+
+# Use tmux if available (interactive shells only, skip in Claude Code)
+if [[ -z "$CLAUDECODE" ]] && [ -z "$TMUX" ] && [[ $- == *i* ]]; then
+  if [[ -n "$SSH_CONNECTION" ]]; then
+    _tmux_session="ssh-$(hostname -s)"
+    tmux attach -d -t "$_tmux_session" || tmux new -s "$_tmux_session"
+    unset _tmux_session
+  else
+    # Each terminal gets its own session (no mirroring).
+    # detach-on-destroy off lets you cycle to other sessions if you want.
+    exec tmux new-session
+  fi
+fi
+
+# PSQL
+export PG_COLOR="always"

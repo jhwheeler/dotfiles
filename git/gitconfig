@@ -6,12 +6,10 @@
 [user]
   name = Jackson Holiday Wheeler
   email = jhwheeler@gmail.com
-[credential]
-  helper = osxkeychain
 [pull]
   rebase = false
 [core]
-  excludesfile = /Users/jackson/.gitignore_global
+  excludesfile = ~/.gitignore_global
 	editor = nvim
 ; [url "git@github.com:"]
 ; 	insteadOf = https://github.com/

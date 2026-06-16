@@ -1,0 +1,4 @@
+os:
+  editPreset: "nvim-remote"
+  editInTerminal: false
+  editCommandTemplate: 'nvim --server $NVIM --remote-send "<cmd>ToggleTerm<cr><cmd>wincmd p<cr>" && nvim --server $NVIM --remote-silent "{{filename}}"'
